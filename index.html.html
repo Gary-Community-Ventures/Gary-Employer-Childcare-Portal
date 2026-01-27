@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gary Employer-Sponsored Childcare Subsidy Program</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState } = React;
+
+        // Icon Components
+        const CheckCircle = ({ size = 24, color = "currentColor" }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+        );
+
+        const Clock = ({ size = 24 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+        );
+
+        const Download = ({ size = 24 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+        );
+
+        function EmployerPortal() {
+            const [activeTab, setActiveTab] = useState('dashboard');
+            const [complianceSubTab, setComplianceSubTab] = useState('overview');
+
+            return (
+                <div style={{minHeight: '100vh'}}>
+                    <div style={{
+                        background: 'white',
+                        padding: '1.5rem 3rem',
+                        borderBottom: '1px solid rgba(0,0,0,0.08)',
+                        position: 'sticky',
+                        top: 0,
+                        zIndex: 100
+                    }}>
+                        <div style={{maxWidth: '1400px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                            <div>
+                                <h1 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700, color: '#1a1a1a'}}>
+                                    Gary Employer-Sponsored Childcare Subsidy Program
+                                </h1>
+                                <div style={{fontSize: '0.9rem', color: '#666', marginTop: '0.25rem'}}>Sample Company</div>
+                            </div>
+                            <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.75rem',
+                                padding: '0.5rem 1rem',
+                                borderRadius: '8px',
+                                background: '#f8f9fa'
+                            }}>
+                                <div style={{
+                                    width: '36px',
+                                    height: '36px',
+                                    borderRadius: '50%',
+                                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    color: 'white',
+                                    fontWeight: 600
+                                }}>SC</div>
+                                <div>
+                                    <div style={{fontWeight: 600, fontSize: '0.9rem'}}>Sarah Chen</div>
+                                    <div style={{fontSize: '0.75rem', color: '#666'}}>CFO</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style={{background: 'white', borderBottom: '1px solid rgba(0,0,0,0.08)', padding: '0 3rem'}}>
+                        <div style={{maxWidth: '1400px', margin: '0 auto', display: 'flex', gap: '2rem'}}>
+                            {['dashboard', 'invoices', 'compliance', 'employees'].map(tab => (
+                                <button
+                                    key={tab}
+                                    onClick={() => setActiveTab(tab)}
+                                    style={{
+                                        padding: '1rem 0',
+                                        border: 'none',
+                                        background: 'none',
+                                        cursor: 'pointer',
+                                        fontWeight: 600,
+                                        fontSize: '0.9rem',
+                                        color: activeTab === tab ? '#2c5364' : '#666',
+                                        borderBottom: activeTab === tab ? '3px solid #2c5364' : '3px solid transparent',
+                                        fontFamily: "'DM Sans', sans-serif",
+                                        textTransform: 'capitalize'
+                                    }}
+                                >
+                                    {tab}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div style={{maxWidth: '1400px', margin: '0 auto', padding: '3rem'}}>
+                        {activeTab === 'dashboard' && (
+                            <div>
+                                <div style={{marginBottom: '2.5rem'}}>
+                                    <h2 style={{fontFamily: "'Crimson Pro', serif", fontSize: '2.25rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem'}}>
+                                        Employer Dashboard
+                                    </h2>
+                                    <p style={{color: 'rgba(255,255,255,0.8)'}}>January 2026 Overview</p>
+                                </div>
+
+                                <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem'}}>
+                                    {[
+                                        {label: 'Enrolled Employees', value: '12', change: '+2 from last month', color: '#667eea'},
+                                        {label: 'Monthly Budget', value: '$10.2K', change: 'On track', color: '#11998e'},
+                                        {label: 'YTD Spend', value: '$102K', change: '10 months tracked', color: '#2193b0'},
+                                        {label: 'Est. Tax Credit', value: '$51K', change: '50% of spend', color: '#f2994a'}
+                                    ].map((metric, i) => (
+                                        <div key={i} style={{
+                                            background: 'white',
+                                            borderRadius: '16px',
+                                            padding: '2rem',
+                                            boxShadow: '0 4px 24px rgba(0,0,0,0.08)'
+                                        }}>
+                                            <div style={{fontSize: '0.85rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem'}}>
+                                                {metric.label}
+                                            </div>
+                                            <div style={{fontFamily: "'Crimson Pro', serif", fontSize: '2.5rem', fontWeight: 700, marginBottom: '0.25rem'}}>
+                                                {metric.value}
+                                            </div>
+                                            <div style={{fontSize: '0.85rem', color: '#10b981', fontWeight: 500}}>
+                                                {metric.change}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+                                        <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>Pending Actions</h3>
+                                        <span style={{color: '#e74c3c', fontWeight: 600}}>2 items need attention</span>
+                                    </div>
+
+                                    {[
+                                        {provider: 'Bright Futures Learning Center', amount: 4250, children: 5, date: '2026-01-15'},
+                                        {provider: 'Mountain View Early Education', amount: 5950, children: 7, date: '2026-01-16'}
+                                    ].map((invoice, i) => (
+                                        <div key={i} style={{
+                                            border: '1px solid #e5e7eb',
+                                            borderRadius: '12px',
+                                            padding: '1.5rem',
+                                            marginBottom: '1rem',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s'
+                                        }}>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem'}}>
+                                                <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
+                                                    <div style={{
+                                                        width: '48px',
+                                                        height: '48px',
+                                                        borderRadius: '8px',
+                                                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        color: 'white',
+                                                        fontWeight: 700,
+                                                        fontSize: '1.25rem'
+                                                    }}>
+                                                        {invoice.provider.charAt(0)}
+                                                    </div>
+                                                    <div>
+                                                        <h4 style={{fontWeight: 600, marginBottom: '0.25rem'}}>{invoice.provider}</h4>
+                                                        <div style={{fontSize: '0.85rem', color: '#666'}}>License: CO-ECE-{8472 + i}</div>
+                                                    </div>
+                                                </div>
+                                                <div style={{
+                                                    background: '#fef3c7',
+                                                    color: '#92400e',
+                                                    padding: '0.5rem 1rem',
+                                                    borderRadius: '6px',
+                                                    fontSize: '0.85rem',
+                                                    fontWeight: 600,
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem'
+                                                }}>
+                                                    <Clock size={16} />
+                                                    Awaiting Approval
+                                                </div>
+                                            </div>
+                                            <div style={{
+                                                display: 'grid',
+                                                gridTemplateColumns: 'repeat(4, 1fr)',
+                                                gap: '1.5rem',
+                                                paddingTop: '1rem',
+                                                borderTop: '1px solid #e5e7eb'
+                                            }}>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem'}}>
+                                                        Invoice Date
+                                                    </label>
+                                                    <div style={{fontWeight: 600}}>{new Date(invoice.date).toLocaleDateString()}</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem'}}>
+                                                        Due Date
+                                                    </label>
+                                                    <div style={{fontWeight: 600}}>{new Date(invoice.date).toLocaleDateString()}</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem'}}>
+                                                        Children Served
+                                                    </label>
+                                                    <div style={{fontWeight: 600}}>{invoice.children}</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem'}}>
+                                                        Amount
+                                                    </label>
+                                                    <div style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2c5364'}}>
+                                                        ${invoice.amount.toLocaleString()}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'invoices' && (
+                            <div>
+                                <div style={{marginBottom: '2.5rem'}}>
+                                    <h2 style={{fontFamily: "'Crimson Pro', serif", fontSize: '2.25rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem'}}>
+                                        Invoice Management
+                                    </h2>
+                                    <p style={{color: 'rgba(255,255,255,0.8)'}}>All invoices and payment history</p>
+                                </div>
+
+                                <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                    {[
+                                        {id: 'INV-2026-001', provider: 'Bright Futures Learning Center', amount: 4250, children: 5, date: '2026-01-15', dueDate: '2026-01-25', status: 'pending', license: 'CO-ECE-8472'},
+                                        {id: 'INV-2026-002', provider: 'Mountain View Early Education', amount: 5950, children: 7, date: '2026-01-16', dueDate: '2026-01-26', status: 'pending', license: 'CO-ECE-9201'},
+                                        {id: 'INV-2025-012', provider: 'Bright Futures Learning Center', amount: 4250, children: 5, date: '2025-12-15', dueDate: '2025-12-25', status: 'paid', paidDate: '2025-12-22', license: 'CO-ECE-8472'}
+                                    ].map((invoice, i) => (
+                                        <div key={i} style={{
+                                            border: '1px solid #e5e7eb',
+                                            borderRadius: '12px',
+                                            padding: '1.5rem',
+                                            marginBottom: '1rem',
+                                            cursor: invoice.status === 'pending' ? 'pointer' : 'default',
+                                            transition: 'all 0.3s'
+                                        }}>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem'}}>
+                                                <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
+                                                    <div style={{
+                                                        width: '48px',
+                                                        height: '48px',
+                                                        borderRadius: '8px',
+                                                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        color: 'white',
+                                                        fontWeight: 700,
+                                                        fontSize: '1.25rem'
+                                                    }}>
+                                                        {invoice.provider.charAt(0)}
+                                                    </div>
+                                                    <div>
+                                                        <h4 style={{fontWeight: 600, marginBottom: '0.25rem'}}>{invoice.provider}</h4>
+                                                        <div style={{fontSize: '0.85rem', color: '#666', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                                                            <CheckCircle size={16} />
+                                                            License: {invoice.license}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {invoice.status === 'pending' ? (
+                                                    <div style={{
+                                                        background: '#fef3c7',
+                                                        color: '#92400e',
+                                                        padding: '0.5rem 1rem',
+                                                        borderRadius: '6px',
+                                                        fontSize: '0.85rem',
+                                                        fontWeight: 600,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '0.5rem'
+                                                    }}>
+                                                        <Clock size={16} />
+                                                        Awaiting Approval
+                                                    </div>
+                                                ) : (
+                                                    <div style={{
+                                                        background: '#d1fae5',
+                                                        color: '#065f46',
+                                                        padding: '0.5rem 1rem',
+                                                        borderRadius: '6px',
+                                                        fontSize: '0.85rem',
+                                                        fontWeight: 600,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '0.5rem'
+                                                    }}>
+                                                        <CheckCircle size={16} />
+                                                        Paid on {new Date(invoice.paidDate).toLocaleDateString()}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div style={{
+                                                display: 'grid',
+                                                gridTemplateColumns: 'repeat(4, 1fr)',
+                                                gap: '1.5rem',
+                                                paddingTop: '1rem',
+                                                borderTop: '1px solid #e5e7eb'
+                                            }}>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem', fontWeight: 500}}>
+                                                        Invoice ID
+                                                    </label>
+                                                    <div style={{fontWeight: 600}}>{invoice.id}</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem', fontWeight: 500}}>
+                                                        Invoice Date
+                                                    </label>
+                                                    <div style={{fontWeight: 600}}>{new Date(invoice.date).toLocaleDateString()}</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem', fontWeight: 500}}>
+                                                        Children Served
+                                                    </label>
+                                                    <div style={{fontWeight: 600}}>{invoice.children}</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem', fontWeight: 500}}>
+                                                        Amount
+                                                    </label>
+                                                    <div style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2c5364'}}>
+                                                        ${invoice.amount.toLocaleString()}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'compliance' && (
+                            <div>
+                                <div style={{marginBottom: '2.5rem'}}>
+                                    <h2 style={{fontFamily: "'Crimson Pro', serif", fontSize: '2.25rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem'}}>
+                                        Tax Compliance Center
+                                    </h2>
+                                    <p style={{color: 'rgba(255,255,255,0.8)'}}>§45F Tax Credit Documentation & Form 8882 Preparation</p>
+                                </div>
+
+                                <div style={{display: 'flex', gap: '0.5rem', marginBottom: '2rem', borderBottom: '2px solid rgba(255,255,255,0.1)', flexWrap: 'wrap'}}>
+                                    {[
+                                        {id: 'overview', label: 'Overview'},
+                                        {id: 'licenses', label: 'Provider Licenses'},
+                                        {id: 'contracts', label: 'Contracts'},
+                                        {id: 'smallbusiness', label: 'Small Business Verification'},
+                                        {id: 'nondiscrimination', label: 'Nondiscrimination Policy'},
+                                        {id: 'form8882', label: 'Form 8882'}
+                                    ].map(tab => (
+                                        <button
+                                            key={tab.id}
+                                            onClick={() => setComplianceSubTab(tab.id)}
+                                            style={{
+                                                padding: '0.75rem 1.5rem',
+                                                background: 'transparent',
+                                                border: 'none',
+                                                color: complianceSubTab === tab.id ? 'white' : 'rgba(255,255,255,0.7)',
+                                                fontWeight: 600,
+                                                fontSize: '0.9rem',
+                                                cursor: 'pointer',
+                                                borderBottom: complianceSubTab === tab.id ? '3px solid white' : '3px solid transparent',
+                                                fontFamily: "'DM Sans', sans-serif",
+                                                whiteSpace: 'nowrap'
+                                            }}
+                                        >
+                                            {tab.label}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                {complianceSubTab === 'overview' && (
+                                    <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+                                            <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>
+                                                2026 Tax Credit Summary
+                                            </h3>
+                                            <button style={{
+                                                padding: '0.75rem 1.5rem',
+                                                border: '1px solid #e5e7eb',
+                                                background: 'white',
+                                                borderRadius: '8px',
+                                                fontWeight: 600,
+                                                fontSize: '0.9rem',
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '0.5rem'
+                                            }}>
+                                                <Download size={18} />
+                                                Download Audit Packet
+                                            </button>
+                                        </div>
+
+                                        <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0'}}>
+                                                <span>Total Qualified Expenditures (YTD)</span>
+                                                <strong>$102,000</strong>
+                                            </div>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0'}}>
+                                                <span>Small Business Credit Rate</span>
+                                                <strong>50%</strong>
+                                            </div>
+                                            <div style={{
+                                                background: '#f0fdf4',
+                                                padding: '1.5rem',
+                                                borderRadius: '8px',
+                                                display: 'flex',
+                                                justifyContent: 'space-between',
+                                                margin: '1rem 0'
+                                            }}>
+                                                <span style={{fontSize: '1.1rem', fontWeight: 600}}>Estimated Federal Tax Credit</span>
+                                                <strong style={{fontSize: '2rem', color: '#065f46'}}>$51,000</strong>
+                                            </div>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0'}}>
+                                                <span>Net Cost to Company</span>
+                                                <strong>$51,000</strong>
+                                            </div>
+                                        </div>
+
+                                        <div style={{marginTop: '2rem', padding: '1.5rem', background: '#f0f9ff', borderRadius: '12px', borderLeft: '4px solid #0ea5e9'}}>
+                                            <h4 style={{marginBottom: '1rem', color: '#0c4a6e'}}>Documentation Status</h4>
+                                            <ul style={{listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem'}}>
+                                                {[
+                                                    'All provider licenses verified and current',
+                                                    'Contracts with qualified childcare facilities on file',
+                                                    'Invoices and payment records maintained',
+                                                    'Nondiscrimination policy documented',
+                                                    'Form 8882 ready for CPA review'
+                                                ].map((item, i) => (
+                                                    <li key={i} style={{display: 'flex', alignItems: 'center', gap: '0.75rem'}}>
+                                                        <CheckCircle size={20} color="#10b981" />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {complianceSubTab === 'licenses' && (
+                                    <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+                                            <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>Provider Licenses</h3>
+                                            <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
+                                                <span style={{fontSize: '0.9rem', color: '#666'}}>2 Active | 1 Expiring Soon</span>
+                                                <button style={{
+                                                    padding: '0.75rem 1.5rem',
+                                                    border: '1px solid #e5e7eb',
+                                                    background: 'white',
+                                                    borderRadius: '8px',
+                                                    fontWeight: 600,
+                                                    fontSize: '0.9rem',
+                                                    cursor: 'pointer',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem'
+                                                }}>
+                                                    <Download size={18} />
+                                                    Export All
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {[
+                                            {name: 'Bright Futures Learning Center', license: 'CO-ECE-8472', status: 'current', issued: '2023-06-15', expires: '2027-06-15', address: '1234 Maple Street, Denver, CO 80202', capacity: 60},
+                                            {name: 'Mountain View Early Education', license: 'CO-ECE-9201', status: 'current', issued: '2024-01-10', expires: '2028-01-10', address: '567 Pine Avenue, Boulder, CO 80301', capacity: 80},
+                                            {name: 'Sunshine Kids Academy', license: 'CO-ECE-7856', status: 'expiring', issued: '2022-03-20', expires: '2026-03-20', address: '890 Oak Boulevard, Aurora, CO 80012', capacity: 45}
+                                        ].map((provider, i) => (
+                                            <div key={i} style={{
+                                                background: 'white',
+                                                borderRadius: '12px',
+                                                padding: '1.5rem',
+                                                marginBottom: '1rem',
+                                                border: '1px solid #e5e7eb'
+                                            }}>
+                                                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1rem'}}>
+                                                    <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
+                                                        <div style={{
+                                                            width: '56px',
+                                                            height: '56px',
+                                                            borderRadius: '12px',
+                                                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            justifyContent: 'center',
+                                                            color: 'white',
+                                                            fontWeight: 700,
+                                                            fontSize: '1.5rem'
+                                                        }}>
+                                                            {provider.name.charAt(0)}
+                                                        </div>
+                                                        <div>
+                                                            <div style={{fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem'}}>{provider.name}</div>
+                                                            <div style={{color: '#666', fontSize: '0.85rem'}}>Licensed Center</div>
+                                                        </div>
+                                                    </div>
+                                                    <div style={{
+                                                        padding: '0.5rem 1rem',
+                                                        borderRadius: '6px',
+                                                        fontSize: '0.85rem',
+                                                        fontWeight: 600,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '0.5rem',
+                                                        background: provider.status === 'current' ? '#d1fae5' : '#fef3c7',
+                                                        color: provider.status === 'current' ? '#065f46' : '#92400e'
+                                                    }}>
+                                                        {provider.status === 'current' ? <CheckCircle size={16} /> : <Clock size={16} />}
+                                                        {provider.status === 'current' ? 'Current' : 'Expiring Soon'}
+                                                    </div>
+                                                </div>
+                                                <div style={{
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                                                    gap: '1rem',
+                                                    paddingTop: '1rem',
+                                                    borderTop: '1px solid #e5e7eb'
+                                                }}>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>License Number</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{provider.license}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Issue Date</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{new Date(provider.issued).toLocaleDateString()}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Expiration Date</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{new Date(provider.expires).toLocaleDateString()}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Capacity</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{provider.capacity} children</div>
+                                                    </div>
+                                                    <div style={{gridColumn: '1 / -1'}}>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Address</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{provider.address}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {complianceSubTab === 'contracts' && (
+                                    <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+                                            <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>Contracts with Qualified Childcare Facilities</h3>
+                                            <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
+                                                <span style={{fontSize: '0.9rem', color: '#666'}}>2 Active Contracts</span>
+                                                <button style={{
+                                                    padding: '0.75rem 1.5rem',
+                                                    border: '1px solid #e5e7eb',
+                                                    background: 'white',
+                                                    borderRadius: '8px',
+                                                    fontWeight: 600,
+                                                    fontSize: '0.9rem',
+                                                    cursor: 'pointer',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem'
+                                                }}>
+                                                    <Download size={18} />
+                                                    Export All
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {[
+                                            {provider: 'Bright Futures Learning Center', number: 'GRY-BFL-2025-001', signed: '2025-01-05', start: '2025-02-01', end: '2026-12-31', status: 'active', slots: 8, rate: 850},
+                                            {provider: 'Mountain View Early Education', number: 'GRY-MVE-2025-002', signed: '2025-01-12', start: '2025-02-01', end: '2026-12-31', status: 'active', slots: 10, rate: 850},
+                                            {provider: 'Sunshine Kids Academy', number: 'GRY-SKA-2024-003', signed: '2024-06-10', start: '2024-07-01', end: '2025-06-30', status: 'expiring', slots: 5, rate: 850}
+                                        ].map((contract, i) => (
+                                            <div key={i} style={{
+                                                background: 'white',
+                                                borderRadius: '12px',
+                                                padding: '1.5rem',
+                                                marginBottom: '1rem',
+                                                border: '1px solid #e5e7eb'
+                                            }}>
+                                                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e5e7eb'}}>
+                                                    <div>
+                                                        <h4 style={{fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem'}}>{contract.provider}</h4>
+                                                        <div style={{fontFamily: 'monospace', color: '#666', fontSize: '0.85rem'}}>Contract #{contract.number}</div>
+                                                    </div>
+                                                    <div style={{
+                                                        padding: '0.5rem 1rem',
+                                                        borderRadius: '6px',
+                                                        fontSize: '0.85rem',
+                                                        fontWeight: 600,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '0.5rem',
+                                                        background: contract.status === 'active' ? '#d1fae5' : '#fef3c7',
+                                                        color: contract.status === 'active' ? '#065f46' : '#92400e'
+                                                    }}>
+                                                        {contract.status === 'active' ? <CheckCircle size={16} /> : <Clock size={16} />}
+                                                        {contract.status === 'active' ? 'Active' : 'Expiring Soon'}
+                                                    </div>
+                                                </div>
+                                                <div style={{
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                                                    gap: '1.25rem'
+                                                }}>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Signed Date</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{new Date(contract.signed).toLocaleDateString()}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Start Date</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{new Date(contract.start).toLocaleDateString()}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>End Date</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{new Date(contract.end).toLocaleDateString()}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Reserved Slots</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{contract.slots} slots</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Monthly Rate</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>${contract.rate}/child</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Total Monthly Value</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>${(contract.slots * contract.rate).toLocaleString()}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {complianceSubTab === 'smallbusiness' && (
+                                    <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+                                            <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>Small Business Verification</h3>
+                                            <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
+                                                <div style={{
+                                                    background: '#d1fae5',
+                                                    color: '#065f46',
+                                                    padding: '0.5rem 1rem',
+                                                    borderRadius: '6px',
+                                                    fontSize: '0.85rem',
+                                                    fontWeight: 600,
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem'
+                                                }}>
+                                                    <CheckCircle size={16} />
+                                                    Qualified Small Business
+                                                </div>
+                                                <button style={{
+                                                    padding: '0.75rem 1.5rem',
+                                                    border: '1px solid #e5e7eb',
+                                                    background: 'white',
+                                                    borderRadius: '8px',
+                                                    fontWeight: 600,
+                                                    fontSize: '0.9rem',
+                                                    cursor: 'pointer',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem'
+                                                }}>
+                                                    <Download size={18} />
+                                                    Export Documentation
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div style={{marginBottom: '2rem', padding: '1.5rem', background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', borderRadius: '12px', borderLeft: '4px solid #10b981'}}>
+                                            <div style={{display: 'flex', alignItems: 'start', gap: '1rem'}}>
+                                                <CheckCircle size={24} color="#065f46" />
+                                                <div>
+                                                    <h4 style={{marginBottom: '0.5rem', color: '#065f46', fontSize: '1.1rem', fontWeight: 700}}>
+                                                        Enhanced Credit Rate Qualified
+                                                    </h4>
+                                                    <p style={{color: '#047857', lineHeight: 1.6}}>
+                                                        Sample Company qualifies as an eligible small business under IRC §45F with gross receipts below $31 million, 
+                                                        enabling a 50% tax credit rate (enhanced from the standard 40% rate) and a maximum annual credit of $600,000 
+                                                        (enhanced from the standard $500,000 cap).
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style={{background: 'white', borderRadius: '12px', padding: '1.5rem', border: '1px solid #e5e7eb', marginBottom: '1.5rem'}}>
+                                            <h4 style={{marginBottom: '1.5rem', fontSize: '1.1rem', fontWeight: 700}}>Gross Receipts Verification</h4>
+                                            
+                                            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1.5rem'}}>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>2023 Gross Receipts</label>
+                                                    <div style={{fontWeight: 600, fontSize: '0.95rem'}}>$18,450,000</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>2024 Gross Receipts</label>
+                                                    <div style={{fontWeight: 600, fontSize: '0.95rem'}}>$21,200,000</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>2025 Gross Receipts (Projected)</label>
+                                                    <div style={{fontWeight: 600, fontSize: '0.95rem'}}>$24,800,000</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Small Business Threshold</label>
+                                                    <div style={{fontWeight: 600, fontSize: '0.95rem', color: '#065f46'}}>$31,000,000</div>
+                                                </div>
+                                            </div>
+
+                                            <div style={{padding: '1rem', background: '#f9fafb', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                                                <div>
+                                                    <div style={{fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem'}}>Current Status</div>
+                                                    <div style={{fontWeight: 700, fontSize: '1.1rem', color: '#065f46'}}>✓ Qualified Small Business</div>
+                                                </div>
+                                                <div style={{textAlign: 'right'}}>
+                                                    <div style={{fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem'}}>Remaining Capacity</div>
+                                                    <div style={{fontWeight: 700, fontSize: '1.1rem'}}>$6.2M below threshold</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style={{padding: '1.5rem', background: '#fffbeb', borderRadius: '12px', borderLeft: '4px solid #f59e0b'}}>
+                                            <h4 style={{marginBottom: '1rem', color: '#92400e', fontSize: '1rem', fontWeight: 700}}>Important: Annual Monitoring Required</h4>
+                                            <p style={{color: '#92400e', lineHeight: 1.6, marginBottom: '0.75rem'}}>
+                                                To maintain small business status and the enhanced 50% credit rate, your company's gross receipts must remain below $31 million 
+                                                (adjusted annually for inflation). Gary will monitor your status annually and notify you if you approach the threshold.
+                                            </p>
+                                            <p style={{color: '#92400e', lineHeight: 1.6, fontSize: '0.9rem'}}>
+                                                <strong>Next Review:</strong> January 2027 (following 2026 tax year close)
+                                            </p>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {complianceSubTab === 'nondiscrimination' && (
+                                    <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', paddingBottom: '1.5rem', borderBottom: '2px solid #e5e7eb'}}>
+                                            <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.75rem', fontWeight: 700}}>Nondiscrimination Policy</h3>
+                                            <button style={{
+                                                padding: '0.75rem 1.5rem',
+                                                border: '1px solid #e5e7eb',
+                                                background: 'white',
+                                                borderRadius: '8px',
+                                                fontWeight: 600,
+                                                fontSize: '0.9rem',
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '0.5rem'
+                                            }}>
+                                                <Download size={18} />
+                                                Download PDF
+                                            </button>
+                                        </div>
+
+                                        <div style={{lineHeight: 1.8, color: '#374151'}}>
+                                            <p style={{marginBottom: '1rem'}}><strong>Effective Date:</strong> January 1, 2026</p>
+                                            <p style={{marginBottom: '1rem'}}><strong>Last Revised:</strong> January 1, 2026</p>
+
+                                            <h4 style={{fontWeight: 700, marginTop: '2rem', marginBottom: '1rem', fontSize: '1.1rem'}}>1. Policy Statement</h4>
+                                            <p style={{marginBottom: '1rem'}}>
+                                                Sample Company is committed to providing equal access to childcare benefits for all eligible employees. 
+                                                This policy ensures compliance with IRC §45F requirements and demonstrates our commitment to 
+                                                nondiscrimination in the provision of employer-sponsored childcare services.
+                                            </p>
+
+                                            <h4 style={{fontWeight: 700, marginTop: '2rem', marginBottom: '1rem', fontSize: '1.1rem'}}>2. Eligibility Requirements</h4>
+                                            <p style={{marginBottom: '0.5rem'}}>All employees who meet the following criteria are eligible for childcare benefits:</p>
+                                            <ul style={{marginBottom: '1rem', paddingLeft: '2rem'}}>
+                                                <li style={{marginBottom: '0.5rem'}}>Full-time employees who have completed 90 days of employment</li>
+                                                <li style={{marginBottom: '0.5rem'}}>Part-time employees working 20+ hours per week who have completed 180 days of employment</li>
+                                                <li style={{marginBottom: '0.5rem'}}>Employees with dependent children ages 0-12 years old</li>
+                                            </ul>
+
+                                            <h4 style={{fontWeight: 700, marginTop: '2rem', marginBottom: '1rem', fontSize: '1.1rem'}}>3. Nondiscrimination Requirements</h4>
+                                            <p style={{marginBottom: '0.5rem'}}>Sample Company ensures that:</p>
+                                            <ul style={{marginBottom: '1rem', paddingLeft: '2rem'}}>
+                                                <li style={{marginBottom: '0.5rem'}}>Benefits are available to all eligible employees on the same terms regardless of position, title, or compensation level</li>
+                                                <li style={{marginBottom: '0.5rem'}}>No preference is given to highly compensated employees (HCEs) as defined by the IRS</li>
+                                                <li style={{marginBottom: '0.5rem'}}>Enrollment is open and accessible to employees at all organizational levels</li>
+                                                <li style={{marginBottom: '0.5rem'}}>Communication about benefits is distributed equitably across all departments and locations</li>
+                                            </ul>
+
+                                            <div style={{marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #e5e7eb'}}>
+                                                <p style={{marginBottom: '0.5rem'}}><strong>Certified by:</strong></p>
+                                                <p>Sarah Chen, Chief Financial Officer</p>
+                                                <p>Date: January 1, 2026</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {complianceSubTab === 'form8882' && (
+                                    <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', paddingBottom: '1.5rem', borderBottom: '2px solid #e5e7eb'}}>
+                                            <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.75rem', fontWeight: 700}}>IRS Form 8882 Preview</h3>
+                                            <div style={{display: 'flex', gap: '0.75rem'}}>
+                                                <button style={{
+                                                    padding: '0.75rem 1.5rem',
+                                                    border: '1px solid #e5e7eb',
+                                                    background: 'white',
+                                                    borderRadius: '8px',
+                                                    fontWeight: 600,
+                                                    fontSize: '0.9rem',
+                                                    cursor: 'pointer',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem'
+                                                }}>
+                                                    <Download size={18} />
+                                                    Download PDF
+                                                </button>
+                                                <button style={{
+                                                    padding: '1rem 2rem',
+                                                    background: 'linear-gradient(135deg, #2c5364 0%, #203a43 100%)',
+                                                    color: 'white',
+                                                    border: 'none',
+                                                    borderRadius: '8px',
+                                                    fontWeight: 600,
+                                                    fontSize: '1rem',
+                                                    cursor: 'pointer',
+                                                    boxShadow: '0 4px 12px rgba(44, 83, 100, 0.3)'
+                                                }}>
+                                                    Send to CPA
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div style={{textAlign: 'center', marginBottom: '2rem', paddingBottom: '1.5rem', borderBottom: '2px solid #1a1a1a'}}>
+                                            <h3 style={{fontFamily: 'monospace', fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.5rem'}}>Form 8882</h3>
+                                            <p style={{fontSize: '0.9rem', color: '#666', marginBottom: '0.5rem'}}>Credit for Employer-Provided Childcare Facilities and Services</p>
+                                            <p style={{fontWeight: 700}}>Tax Year 2026</p>
+                                            <p style={{marginTop: '1rem'}}>Sample Company | EIN: XX-XXXXXXX</p>
+                                        </div>
+
+                                        <div style={{marginBottom: '2rem'}}>
+                                            <div style={{background: '#f3f4f6', padding: '0.75rem 1rem', fontWeight: 700, marginBottom: '1rem', borderLeft: '4px solid #2c5364'}}>
+                                                Part I: Current Year Credit
+                                            </div>
+                                            
+                                            {[
+                                                {label: '1. Qualified childcare facility expenditures (see instructions)', value: '$0.00'},
+                                                {label: '2. Qualified childcare resource and referral expenditures', value: '$0.00'},
+                                                {label: '3. Qualified childcare contract expenditures (payments to qualified facilities)', value: '$102,000.00'},
+                                                {label: '4. Total qualified expenditures (add lines 1, 2, and 3)', value: '$102,000.00'},
+                                                {label: '5. Enter your credit percentage (50% for small business, 40% for others)', value: '50%'},
+                                                {label: '6. Multiply line 4 by line 5', value: '$51,000.00'},
+                                                {label: '7. Maximum credit per year ($600,000 for small business, $500,000 for others)', value: '$600,000.00'}
+                                            ].map((row, i) => (
+                                                <div key={i} style={{
+                                                    display: 'grid',
+                                                    gridTemplateColumns: '2fr 1fr',
+                                                    gap: '1rem',
+                                                    padding: '0.75rem 1rem',
+                                                    borderBottom: '1px solid #e5e7eb'
+                                                }}>
+                                                    <label style={{color: '#374151'}}>{row.label}</label>
+                                                    <div style={{textAlign: 'right', fontWeight: 600, fontFamily: 'monospace'}}>{row.value}</div>
+                                                </div>
+                                            ))}
+
+                                            <div style={{
+                                                background: '#f0fdf4',
+                                                fontWeight: 700,
+                                                padding: '1rem',
+                                                marginTop: '0.5rem',
+                                                border: '2px solid #10b981',
+                                                borderRadius: '8px',
+                                                display: 'grid',
+                                                gridTemplateColumns: '2fr 1fr',
+                                                gap: '1rem'
+                                            }}>
+                                                <label>8. Current year credit (enter the smaller of line 6 or line 7 here and on Form 3800)</label>
+                                                <div style={{textAlign: 'right', color: '#065f46', fontSize: '1.25rem', fontFamily: 'monospace'}}>$51,000.00</div>
+                                            </div>
+                                        </div>
+
+                                        <div style={{marginBottom: '2rem'}}>
+                                            <div style={{background: '#f3f4f6', padding: '0.75rem 1rem', fontWeight: 700, marginBottom: '1rem', borderLeft: '4px solid #2c5364'}}>
+                                                Part II: Qualified Facilities Information
+                                            </div>
+                                            
+                                            <div style={{padding: '1rem', background: '#f9fafb', borderRadius: '8px'}}>
+                                                <p style={{marginBottom: '1rem', fontWeight: 600}}>Contracted Qualified Childcare Facilities:</p>
+                                                <ul style={{listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem'}}>
+                                                    <li>• Bright Futures Learning Center - License #CO-ECE-8472</li>
+                                                    <li>• Mountain View Early Education - License #CO-ECE-9201</li>
+                                                    <li>• Sunshine Kids Academy - License #CO-ECE-7856</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div style={{background: '#eff6ff', padding: '1rem 1.5rem', borderRadius: '8px', borderLeft: '4px solid #3b82f6', fontSize: '0.9rem', lineHeight: 1.6, color: '#1e40af'}}>
+                                            <strong>Note:</strong> This is a pre-filled preview based on your qualified expenditures through the Gary platform. 
+                                            Please have your tax advisor review all calculations and supporting documentation before filing. 
+                                            All required documentation (contracts, licenses, invoices, payment records) is available in your audit-ready packet.
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {activeTab === 'employees' && (
+                            <div>
+                                <div style={{marginBottom: '2.5rem'}}>
+                                    <h2 style={{fontFamily: "'Crimson Pro', serif", fontSize: '2.25rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem'}}>
+                                        Employee Enrollment
+                                    </h2>
+                                    <p style={{color: 'rgba(255,255,255,0.8)'}}>Childcare benefit participants and subsidy tracking</p>
+                                </div>
+
+                                <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '2rem'}}>
+                                    {[
+                                        {label: 'Total Enrolled', value: '12'},
+                                        {label: 'Total Children', value: '12'},
+                                        {label: 'Monthly Subsidy', value: '$10,200'}
+                                    ].map((stat, i) => (
+                                        <div key={i} style={{padding: '1.5rem', background: 'white', borderRadius: '12px', border: '1px solid #e5e7eb'}}>
+                                            <div style={{fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 500}}>
+                                                {stat.label}
+                                            </div>
+                                            <div style={{fontFamily: "'Crimson Pro', serif", fontSize: '2rem', fontWeight: 700}}>
+                                                {stat.value}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', marginBottom: '2rem'}}>
+                                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+                                        <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>
+                                            Enrolled Employees
+                                        </h3>
+                                        <button style={{
+                                            padding: '0.75rem 1.5rem',
+                                            border: '1px solid #e5e7eb',
+                                            background: 'white',
+                                            borderRadius: '8px',
+                                            fontWeight: 600,
+                                            fontSize: '0.9rem',
+                                            cursor: 'pointer',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem'
+                                        }}>
+                                            <Download size={18} />
+                                            Export List
+                                        </button>
+                                    </div>
+
+                                    <div style={{overflowX: 'auto'}}>
+                                        <table style={{width: '100%', borderCollapse: 'separate', borderSpacing: 0, border: '1px solid #e5e7eb', borderRadius: '12px', overflow: 'hidden'}}>
+                                            <thead>
+                                                <tr style={{background: '#f9fafb'}}>
+                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Employee</th>
+                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Department</th>
+                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Child / Age</th>
+                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Provider</th>
+                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Enrolled Since</th>
+                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Monthly Subsidy</th>
+                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>YTD Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {[
+                                                    {id: 'EMP-1043', name: 'Emma Rodriguez', dept: 'Engineering', child: 'Emma Rodriguez Jr.', age: 3, provider: 'Bright Futures Learning Center', enrolled: '2025-06-15', ytd: 5950},
+                                                    {id: 'EMP-2156', name: 'Noah Chen', dept: 'Product', child: 'Lily Chen', age: 2, provider: 'Bright Futures Learning Center', enrolled: '2025-07-01', ytd: 5100},
+                                                    {id: 'EMP-0987', name: 'Sophia Martinez', dept: 'Marketing', child: 'Diego Martinez', age: 4, provider: 'Bright Futures Learning Center', enrolled: '2025-08-10', ytd: 4250},
+                                                    {id: 'EMP-1834', name: 'Liam Thompson', dept: 'Sales', child: 'Ava Thompson', age: 1, provider: 'Bright Futures Learning Center', enrolled: '2025-06-15', ytd: 5950},
+                                                    {id: 'EMP-2901', name: 'Olivia Patel', dept: 'Engineering', child: 'Arjun Patel', age: 3, provider: 'Bright Futures Learning Center', enrolled: '2025-07-20', ytd: 4675},
+                                                    {id: 'EMP-3421', name: 'Ava Johnson', dept: 'Operations', child: 'Mason Johnson', age: 2, provider: 'Mountain View Early Education', enrolled: '2025-06-01', ytd: 6800},
+                                                    {id: 'EMP-1209', name: 'Jackson Davis', dept: 'Finance', child: 'Emma Davis', age: 4, provider: 'Mountain View Early Education', enrolled: '2025-08-15', ytd: 3825},
+                                                    {id: 'EMP-4567', name: 'Mia Wilson', dept: 'HR', child: 'Oliver Wilson', age: 3, provider: 'Mountain View Early Education', enrolled: '2025-06-15', ytd: 5950},
+                                                    {id: 'EMP-2198', name: 'Lucas Anderson', dept: 'Engineering', child: 'Charlotte Anderson', age: 1, provider: 'Mountain View Early Education', enrolled: '2025-09-01', ytd: 3400},
+                                                    {id: 'EMP-3890', name: 'Harper White', dept: 'Design', child: 'James White', age: 5, provider: 'Mountain View Early Education', enrolled: '2025-07-10', ytd: 5100},
+                                                    {id: 'EMP-1672', name: 'Ethan Brown', dept: 'Sales', child: 'Sophia Brown', age: 2, provider: 'Mountain View Early Education', enrolled: '2025-08-01', ytd: 4250},
+                                                    {id: 'EMP-2445', name: 'Amelia Garcia', dept: 'Marketing', child: 'Benjamin Garcia', age: 4, provider: 'Mountain View Early Education', enrolled: '2025-06-20', ytd: 5525}
+                                                ].map((emp, i, arr) => (
+                                                    <tr key={i} style={{borderBottom: i === arr.length - 1 ? 'none' : '1px solid #e5e7eb'}}>
+                                                        <td style={{padding: '1rem 1.5rem', color: '#374151'}}>
+                                                            <div style={{fontWeight: 600, color: '#1a1a1a', marginBottom: '0.25rem'}}>{emp.name}</div>
+                                                            <div style={{fontFamily: 'monospace', fontSize: '0.85rem', color: '#666'}}>{emp.id}</div>
+                                                        </td>
+                                                        <td style={{padding: '1rem 1.5rem', color: '#374151'}}>{emp.dept}</td>
+                                                        <td style={{padding: '1rem 1.5rem', color: '#374151'}}>
+                                                            <div style={{fontWeight: 500, color: '#1a1a1a', marginBottom: '0.25rem'}}>{emp.child}</div>
+                                                            <div style={{fontSize: '0.85rem', color: '#666'}}>{emp.age} years old</div>
+                                                        </td>
+                                                        <td style={{padding: '1rem 1.5rem', color: '#374151'}}>{emp.provider}</td>
+                                                        <td style={{padding: '1rem 1.5rem', color: '#374151'}}>{new Date(emp.enrolled).toLocaleDateString()}</td>
+                                                        <td style={{padding: '1rem 1.5rem', fontWeight: 700, fontFamily: "'Crimson Pro', serif", fontSize: '1.1rem', color: '#2c5364'}}>$850</td>
+                                                        <td style={{padding: '1rem 1.5rem', fontWeight: 700, fontFamily: "'Crimson Pro', serif", fontSize: '1.1rem', color: '#2c5364'}}>${emp.ytd.toLocaleString()}</td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                    <div style={{marginBottom: '2rem'}}>
+                                        <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>
+                                            Provider Distribution
+                                        </h3>
+                                    </div>
+
+                                    <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem'}}>
+                                        {[
+                                            {name: 'Bright Futures Learning Center', letter: 'B', count: 5, cost: 4250},
+                                            {name: 'Mountain View Early Education', letter: 'M', count: 7, cost: 5950}
+                                        ].map((provider, i) => (
+                                            <div key={i} style={{
+                                                background: 'white',
+                                                borderRadius: '12px',
+                                                padding: '1.5rem',
+                                                border: '1px solid #e5e7eb'
+                                            }}>
+                                                <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem'}}>
+                                                    <div style={{
+                                                        width: '56px',
+                                                        height: '56px',
+                                                        borderRadius: '12px',
+                                                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        color: 'white',
+                                                        fontWeight: 700,
+                                                        fontSize: '1.5rem'
+                                                    }}>
+                                                        {provider.letter}
+                                                    </div>
+                                                    <div>
+                                                        <div style={{fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem'}}>{provider.name}</div>
+                                                        <div style={{color: '#666', fontSize: '0.85rem'}}>Licensed Center</div>
+                                                    </div>
+                                                </div>
+                                                <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', paddingTop: '1rem', borderTop: '1px solid #e5e7eb'}}>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>
+                                                            Enrolled Employees
+                                                        </label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{provider.count}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>
+                                                            Monthly Cost
+                                                        </label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>${provider.cost.toLocaleString()}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<EmployerPortal />);
+    </script>
+</body>
+</html>
