@@ -1050,16 +1050,16 @@
                                         <table style={{width: '100%', borderCollapse: 'separate', borderSpacing: 0, border: '1px solid #e5e7eb', borderRadius: '12px', overflow: 'hidden'}}>
                                             <thead>
                                                 <tr style={{background: '#f9fafb'}}>
-                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Employee</th>
-                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Department</th>
-                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Child / Age</th>
-                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Provider</th>
-                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Enrolled Since</th>
-                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Employer Subsidy</th>
-                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>State Funding</th>
-                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Philanthropy</th>
-                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>Total Monthly</th>
-                                                    <th style={{padding: '1rem 1.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', borderBottom: '2px solid #e5e7eb'}}>YTD Total</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Employee</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Dept</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Child</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Provider</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Enrolled</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Employer</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>State</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Philanthropy</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Total</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>YTD</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -1078,22 +1078,21 @@
                                                     {id: 'EMP-2445', name: 'Amelia Garcia', dept: 'Marketing', child: 'Benjamin Garcia', age: 4, provider: 'Mountain View Early Education', enrolled: '2025-06-20', employerSubsidy: 500, stateFunding: 0, philanthropy: 500, ytd: 7000}
                                                 ].map((emp, i, arr) => (
                                                     <tr key={i} style={{borderBottom: i === arr.length - 1 ? 'none' : '1px solid #e5e7eb'}}>
-                                                        <td style={{padding: '1rem 1.5rem', color: '#374151'}}>
-                                                            <div style={{fontWeight: 600, color: '#1a1a1a', marginBottom: '0.25rem'}}>{emp.name}</div>
-                                                            <div style={{fontFamily: 'monospace', fontSize: '0.85rem', color: '#666'}}>{emp.id}</div>
+                                                        <td style={{padding: '0.5rem', color: '#374151', fontSize: '0.8rem'}}>
+                                                            <div style={{fontWeight: 600, color: '#1a1a1a'}}>{emp.name}</div>
                                                         </td>
-                                                        <td style={{padding: '1rem 1.5rem', color: '#374151'}}>{emp.dept}</td>
-                                                        <td style={{padding: '1rem 1.5rem', color: '#374151'}}>
-                                                            <div style={{fontWeight: 500, color: '#1a1a1a', marginBottom: '0.25rem'}}>{emp.child}</div>
-                                                            <div style={{fontSize: '0.85rem', color: '#666'}}>{emp.age} years old</div>
+                                                        <td style={{padding: '0.5rem', color: '#374151', fontSize: '0.8rem'}}>{emp.dept}</td>
+                                                        <td style={{padding: '0.5rem', color: '#374151', fontSize: '0.8rem'}}>
+                                                            <div style={{fontWeight: 500, color: '#1a1a1a'}}>{emp.child.split(' ')[0]}</div>
+                                                            <div style={{fontSize: '0.75rem', color: '#666'}}>{emp.age}y</div>
                                                         </td>
-                                                        <td style={{padding: '1rem 1.5rem', color: '#374151'}}>{emp.provider}</td>
-                                                        <td style={{padding: '1rem 1.5rem', color: '#374151'}}>{new Date(emp.enrolled).toLocaleDateString()}</td>
-                                                        <td style={{padding: '1rem 1.5rem', fontWeight: 600, color: '#2c5364'}}>${emp.employerSubsidy}</td>
-                                                        <td style={{padding: '1rem 1.5rem', fontWeight: 600, color: emp.stateFunding > 0 ? '#ea580c' : '#9ca3af'}}>{emp.stateFunding > 0 ? `$${emp.stateFunding}` : '—'}</td>
-                                                        <td style={{padding: '1rem 1.5rem', fontWeight: 600, color: emp.philanthropy > 0 ? '#7c3aed' : '#9ca3af'}}>{emp.philanthropy > 0 ? `$${emp.philanthropy}` : '—'}</td>
-                                                        <td style={{padding: '1rem 1.5rem', fontWeight: 700, fontFamily: "'Crimson Pro', serif", fontSize: '1.1rem', color: '#065f46'}}>${(emp.employerSubsidy + emp.stateFunding + emp.philanthropy).toLocaleString()}</td>
-                                                        <td style={{padding: '1rem 1.5rem', fontWeight: 700, fontFamily: "'Crimson Pro', serif", fontSize: '1.1rem', color: '#2c5364'}}>${emp.ytd.toLocaleString()}</td>
+                                                        <td style={{padding: '0.5rem', color: '#374151', fontSize: '0.75rem'}}>{emp.provider.split(' ').slice(0, 2).join(' ')}</td>
+                                                        <td style={{padding: '0.5rem', color: '#374151', fontSize: '0.8rem'}}>{new Date(emp.enrolled).toLocaleDateString()}</td>
+                                                        <td style={{padding: '0.5rem', fontWeight: 600, color: '#2c5364', fontSize: '0.85rem'}}>${emp.employerSubsidy}</td>
+                                                        <td style={{padding: '0.5rem', fontWeight: 600, color: emp.stateFunding > 0 ? '#ea580c' : '#9ca3af', fontSize: '0.85rem'}}>{emp.stateFunding > 0 ? `$${emp.stateFunding}` : '—'}</td>
+                                                        <td style={{padding: '0.5rem', fontWeight: 600, color: emp.philanthropy > 0 ? '#7c3aed' : '#9ca3af', fontSize: '0.85rem'}}>{emp.philanthropy > 0 ? `$${emp.philanthropy}` : '—'}</td>
+                                                        <td style={{padding: '0.5rem', fontWeight: 700, fontSize: '0.9rem', color: '#065f46'}}>${(emp.employerSubsidy + emp.stateFunding + emp.philanthropy).toLocaleString()}</td>
+                                                        <td style={{padding: '0.5rem', fontWeight: 700, fontSize: '0.9rem', color: '#2c5364'}}>${emp.ytd.toLocaleString()}</td>
                                                     </tr>
                                                 ))}
                                             </tbody>
