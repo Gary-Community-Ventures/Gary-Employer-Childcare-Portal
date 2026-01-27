@@ -968,6 +968,63 @@
                                 </div>
 
                                 <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', marginBottom: '2rem'}}>
+                                    <div style={{marginBottom: '2rem'}}>
+                                        <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>
+                                            Provider Distribution
+                                        </h3>
+                                    </div>
+
+                                    <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem'}}>
+                                        {[
+                                            {name: 'Bright Futures Learning Center', letter: 'B', count: 5, cost: 4250},
+                                            {name: 'Mountain View Early Education', letter: 'M', count: 7, cost: 5950}
+                                        ].map((provider, i) => (
+                                            <div key={i} style={{
+                                                background: 'white',
+                                                borderRadius: '12px',
+                                                padding: '1.5rem',
+                                                border: '1px solid #e5e7eb'
+                                            }}>
+                                                <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem'}}>
+                                                    <div style={{
+                                                        width: '56px',
+                                                        height: '56px',
+                                                        borderRadius: '12px',
+                                                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        color: 'white',
+                                                        fontWeight: 700,
+                                                        fontSize: '1.5rem'
+                                                    }}>
+                                                        {provider.letter}
+                                                    </div>
+                                                    <div>
+                                                        <div style={{fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem'}}>{provider.name}</div>
+                                                        <div style={{color: '#666', fontSize: '0.85rem'}}>Licensed Center</div>
+                                                    </div>
+                                                </div>
+                                                <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', paddingTop: '1rem', borderTop: '1px solid #e5e7eb'}}>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>
+                                                            Enrolled Employees
+                                                        </label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{provider.count}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>
+                                                            Monthly Cost
+                                                        </label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>${provider.cost.toLocaleString()}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', marginBottom: '2rem'}}>
                                     <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
                                         <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>
                                             Enrolled Employees
@@ -1041,63 +1098,6 @@
                                                 ))}
                                             </tbody>
                                         </table>
-                                    </div>
-                                </div>
-
-                                <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
-                                    <div style={{marginBottom: '2rem'}}>
-                                        <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>
-                                            Provider Distribution
-                                        </h3>
-                                    </div>
-
-                                    <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem'}}>
-                                        {[
-                                            {name: 'Bright Futures Learning Center', letter: 'B', count: 5, cost: 4250},
-                                            {name: 'Mountain View Early Education', letter: 'M', count: 7, cost: 5950}
-                                        ].map((provider, i) => (
-                                            <div key={i} style={{
-                                                background: 'white',
-                                                borderRadius: '12px',
-                                                padding: '1.5rem',
-                                                border: '1px solid #e5e7eb'
-                                            }}>
-                                                <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem'}}>
-                                                    <div style={{
-                                                        width: '56px',
-                                                        height: '56px',
-                                                        borderRadius: '12px',
-                                                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        justifyContent: 'center',
-                                                        color: 'white',
-                                                        fontWeight: 700,
-                                                        fontSize: '1.5rem'
-                                                    }}>
-                                                        {provider.letter}
-                                                    </div>
-                                                    <div>
-                                                        <div style={{fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem'}}>{provider.name}</div>
-                                                        <div style={{color: '#666', fontSize: '0.85rem'}}>Licensed Center</div>
-                                                    </div>
-                                                </div>
-                                                <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', paddingTop: '1rem', borderTop: '1px solid #e5e7eb'}}>
-                                                    <div>
-                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>
-                                                            Enrolled Employees
-                                                        </label>
-                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{provider.count}</div>
-                                                    </div>
-                                                    <div>
-                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>
-                                                            Monthly Cost
-                                                        </label>
-                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>${provider.cost.toLocaleString()}</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))}
                                     </div>
                                 </div>
                             </div>
