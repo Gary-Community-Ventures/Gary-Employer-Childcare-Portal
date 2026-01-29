@@ -383,9 +383,7 @@
                                         {id: 'overview', label: 'Overview'},
                                         {id: 'licenses', label: 'Provider Licenses'},
                                         {id: 'contracts', label: 'Contracts'},
-                                        {id: 'smallbusiness', label: 'Small Business Verification'},
-                                        {id: 'nondiscrimination', label: 'Nondiscrimination Policy'},
-                                        {id: 'form8882', label: 'Form 8882'}
+                                        {id: 'nondiscrimination', label: 'Nondiscrimination Policy'}
                                     ].map(tab => (
                                         <button
                                             key={tab.id}
@@ -410,25 +408,10 @@
 
                                 {complianceSubTab === 'overview' && (
                                     <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
-                                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+                                        <div style={{marginBottom: '2rem'}}>
                                             <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>
-                                                2026 Tax Credit Summary
+                                                Estimated 2026 Tax Credit Summary
                                             </h3>
-                                            <button style={{
-                                                padding: '0.75rem 1.5rem',
-                                                border: '1px solid #e5e7eb',
-                                                background: 'white',
-                                                borderRadius: '8px',
-                                                fontWeight: 600,
-                                                fontSize: '0.9rem',
-                                                cursor: 'pointer',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                gap: '0.5rem'
-                                            }}>
-                                                <Download size={18} />
-                                                Download Audit Packet
-                                            </button>
                                         </div>
 
                                         <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
@@ -673,106 +656,6 @@
                                     </div>
                                 )}
 
-                                {complianceSubTab === 'smallbusiness' && (
-                                    <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
-                                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
-                                            <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>Small Business Verification</h3>
-                                            <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
-                                                <div style={{
-                                                    background: '#d1fae5',
-                                                    color: '#065f46',
-                                                    padding: '0.5rem 1rem',
-                                                    borderRadius: '6px',
-                                                    fontSize: '0.85rem',
-                                                    fontWeight: 600,
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    gap: '0.5rem'
-                                                }}>
-                                                    <CheckCircle size={16} />
-                                                    Qualified Small Business
-                                                </div>
-                                                <button style={{
-                                                    padding: '0.75rem 1.5rem',
-                                                    border: '1px solid #e5e7eb',
-                                                    background: 'white',
-                                                    borderRadius: '8px',
-                                                    fontWeight: 600,
-                                                    fontSize: '0.9rem',
-                                                    cursor: 'pointer',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    gap: '0.5rem'
-                                                }}>
-                                                    <Download size={18} />
-                                                    Export Documentation
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <div style={{marginBottom: '2rem', padding: '1.5rem', background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)', borderRadius: '12px', borderLeft: '4px solid #10b981'}}>
-                                            <div style={{display: 'flex', alignItems: 'start', gap: '1rem'}}>
-                                                <CheckCircle size={24} color="#065f46" />
-                                                <div>
-                                                    <h4 style={{marginBottom: '0.5rem', color: '#065f46', fontSize: '1.1rem', fontWeight: 700}}>
-                                                        Enhanced Credit Rate Qualified
-                                                    </h4>
-                                                    <p style={{color: '#047857', lineHeight: 1.6}}>
-                                                        Sample Company qualifies as an eligible small business under IRC §45F with gross receipts below $31 million, 
-                                                        enabling a 50% tax credit rate (enhanced from the standard 40% rate) and a maximum annual credit of $600,000 
-                                                        (enhanced from the standard $500,000 cap).
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div style={{background: 'white', borderRadius: '12px', padding: '1.5rem', border: '1px solid #e5e7eb', marginBottom: '1.5rem'}}>
-                                            <h4 style={{marginBottom: '1.5rem', fontSize: '1.1rem', fontWeight: 700}}>Gross Receipts Verification</h4>
-                                            
-                                            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1.5rem'}}>
-                                                <div>
-                                                    <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>2023 Gross Receipts</label>
-                                                    <div style={{fontWeight: 600, fontSize: '0.95rem'}}>$18,450,000</div>
-                                                </div>
-                                                <div>
-                                                    <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>2024 Gross Receipts</label>
-                                                    <div style={{fontWeight: 600, fontSize: '0.95rem'}}>$21,200,000</div>
-                                                </div>
-                                                <div>
-                                                    <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>2025 Gross Receipts (Projected)</label>
-                                                    <div style={{fontWeight: 600, fontSize: '0.95rem'}}>$24,800,000</div>
-                                                </div>
-                                                <div>
-                                                    <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Small Business Threshold</label>
-                                                    <div style={{fontWeight: 600, fontSize: '0.95rem', color: '#065f46'}}>$31,000,000</div>
-                                                </div>
-                                            </div>
-
-                                            <div style={{padding: '1rem', background: '#f9fafb', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                                                <div>
-                                                    <div style={{fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem'}}>Current Status</div>
-                                                    <div style={{fontWeight: 700, fontSize: '1.1rem', color: '#065f46'}}>✓ Qualified Small Business</div>
-                                                </div>
-                                                <div style={{textAlign: 'right'}}>
-                                                    <div style={{fontSize: '0.85rem', color: '#666', marginBottom: '0.25rem'}}>Remaining Capacity</div>
-                                                    <div style={{fontWeight: 700, fontSize: '1.1rem'}}>$6.2M below threshold</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div style={{padding: '1.5rem', background: '#fffbeb', borderRadius: '12px', borderLeft: '4px solid #f59e0b'}}>
-                                            <h4 style={{marginBottom: '1rem', color: '#92400e', fontSize: '1rem', fontWeight: 700}}>Important: Annual Monitoring Required</h4>
-                                            <p style={{color: '#92400e', lineHeight: 1.6, marginBottom: '0.75rem'}}>
-                                                To maintain small business status and the enhanced 50% credit rate, your company's gross receipts must remain below $31 million 
-                                                (adjusted annually for inflation). Gary will monitor your status annually and notify you if you approach the threshold.
-                                            </p>
-                                            <p style={{color: '#92400e', lineHeight: 1.6, fontSize: '0.9rem'}}>
-                                                <strong>Next Review:</strong> January 2027 (following 2026 tax year close)
-                                            </p>
-                                        </div>
-                                    </div>
-                                )}
-
                                 {complianceSubTab === 'nondiscrimination' && (
                                     <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
                                         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', paddingBottom: '1.5rem', borderBottom: '2px solid #e5e7eb'}}>
@@ -831,113 +714,6 @@
                                     </div>
                                 )}
 
-                                {complianceSubTab === 'form8882' && (
-                                    <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
-                                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', paddingBottom: '1.5rem', borderBottom: '2px solid #e5e7eb'}}>
-                                            <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.75rem', fontWeight: 700}}>IRS Form 8882 Preview</h3>
-                                            <div style={{display: 'flex', gap: '0.75rem'}}>
-                                                <button style={{
-                                                    padding: '0.75rem 1.5rem',
-                                                    border: '1px solid #e5e7eb',
-                                                    background: 'white',
-                                                    borderRadius: '8px',
-                                                    fontWeight: 600,
-                                                    fontSize: '0.9rem',
-                                                    cursor: 'pointer',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    gap: '0.5rem'
-                                                }}>
-                                                    <Download size={18} />
-                                                    Download PDF
-                                                </button>
-                                                <button style={{
-                                                    padding: '1rem 2rem',
-                                                    background: 'linear-gradient(135deg, #2c5364 0%, #203a43 100%)',
-                                                    color: 'white',
-                                                    border: 'none',
-                                                    borderRadius: '8px',
-                                                    fontWeight: 600,
-                                                    fontSize: '1rem',
-                                                    cursor: 'pointer',
-                                                    boxShadow: '0 4px 12px rgba(44, 83, 100, 0.3)'
-                                                }}>
-                                                    Send to CPA
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <div style={{textAlign: 'center', marginBottom: '2rem', paddingBottom: '1.5rem', borderBottom: '2px solid #1a1a1a'}}>
-                                            <h3 style={{fontFamily: 'monospace', fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.5rem'}}>Form 8882</h3>
-                                            <p style={{fontSize: '0.9rem', color: '#666', marginBottom: '0.5rem'}}>Credit for Employer-Provided Childcare Facilities and Services</p>
-                                            <p style={{fontWeight: 700}}>Tax Year 2026</p>
-                                            <p style={{marginTop: '1rem'}}>Sample Company | EIN: XX-XXXXXXX</p>
-                                        </div>
-
-                                        <div style={{marginBottom: '2rem'}}>
-                                            <div style={{background: '#f3f4f6', padding: '0.75rem 1rem', fontWeight: 700, marginBottom: '1rem', borderLeft: '4px solid #2c5364'}}>
-                                                Part I: Current Year Credit
-                                            </div>
-                                            
-                                            {[
-                                                {label: '1. Qualified childcare facility expenditures (see instructions)', value: '$0.00'},
-                                                {label: '2. Qualified childcare resource and referral expenditures', value: '$0.00'},
-                                                {label: '3. Qualified childcare contract expenditures (payments to qualified facilities)', value: '$60,000.00'},
-                                                {label: '4. Total qualified expenditures (add lines 1, 2, and 3)', value: '$60,000.00'},
-                                                {label: '5. Enter your credit percentage (50% for small business, 40% for others)', value: '50%'},
-                                                {label: '6. Multiply line 4 by line 5', value: '$30,000.00'},
-                                                {label: '7. Maximum credit per year ($600,000 for small business, $500,000 for others)', value: '$600,000.00'}
-                                            ].map((row, i) => (
-                                                <div key={i} style={{
-                                                    display: 'grid',
-                                                    gridTemplateColumns: '2fr 1fr',
-                                                    gap: '1rem',
-                                                    padding: '0.75rem 1rem',
-                                                    borderBottom: '1px solid #e5e7eb'
-                                                }}>
-                                                    <label style={{color: '#374151'}}>{row.label}</label>
-                                                    <div style={{textAlign: 'right', fontWeight: 600, fontFamily: 'monospace'}}>{row.value}</div>
-                                                </div>
-                                            ))}
-
-                                            <div style={{
-                                                background: '#f0fdf4',
-                                                fontWeight: 700,
-                                                padding: '1rem',
-                                                marginTop: '0.5rem',
-                                                border: '2px solid #10b981',
-                                                borderRadius: '8px',
-                                                display: 'grid',
-                                                gridTemplateColumns: '2fr 1fr',
-                                                gap: '1rem'
-                                            }}>
-                                                <label>8. Current year credit (enter the smaller of line 6 or line 7 here and on Form 3800)</label>
-                                                <div style={{textAlign: 'right', color: '#065f46', fontSize: '1.25rem', fontFamily: 'monospace'}}>$30,000.00</div>
-                                            </div>
-                                        </div>
-
-                                        <div style={{marginBottom: '2rem'}}>
-                                            <div style={{background: '#f3f4f6', padding: '0.75rem 1rem', fontWeight: 700, marginBottom: '1rem', borderLeft: '4px solid #2c5364'}}>
-                                                Part II: Qualified Facilities Information
-                                            </div>
-                                            
-                                            <div style={{padding: '1rem', background: '#f9fafb', borderRadius: '8px'}}>
-                                                <p style={{marginBottom: '1rem', fontWeight: 600}}>Contracted Qualified Childcare Facilities:</p>
-                                                <ul style={{listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem'}}>
-                                                    <li>• Bright Futures Learning Center - License #CO-ECE-8472</li>
-                                                    <li>• Mountain View Early Education - License #CO-ECE-9201</li>
-                                                    <li>• Sunshine Kids Academy - License #CO-ECE-7856</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div style={{background: '#eff6ff', padding: '1rem 1.5rem', borderRadius: '8px', borderLeft: '4px solid #3b82f6', fontSize: '0.9rem', lineHeight: 1.6, color: '#1e40af'}}>
-                                            <strong>Note:</strong> This is a pre-filled preview based on your qualified expenditures through the Gary platform. 
-                                            Please have your tax advisor review all calculations and supporting documentation before filing. 
-                                            All required documentation (contracts, licenses, invoices, payment records) is available in your audit-ready packet.
-                                        </div>
-                                    </div>
-                                )}
                             </div>
                         )}
 
