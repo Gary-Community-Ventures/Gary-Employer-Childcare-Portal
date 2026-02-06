@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TXBKD6FHXY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-TXBKD6FHXY');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer-Sponsored Childcare Subsidy Program</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState } = React;
+
+        // Icon Components
+        const CheckCircle = ({ size = 24, color = "currentColor" }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+        );
+
+        const Clock = ({ size = 24 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+        );
+
+        const Download = ({ size = 24 }) => (
+            <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+        );
+
+        function EmployerPortal() {
+            const [activeTab, setActiveTab] = useState('dashboard');
+            const [complianceSubTab, setComplianceSubTab] = useState('overview');
+
+            return (
+                <div style={{minHeight: '100vh'}}>
+                    <div style={{
+                        background: 'white',
+                        padding: '1.5rem 3rem',
+                        borderBottom: '1px solid rgba(0,0,0,0.08)',
+                        position: 'sticky',
+                        top: 0,
+                        zIndex: 100
+                    }}>
+                        <div style={{maxWidth: '1400px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                            <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
+                                {/* Sample Company Logo */}
+                                <div style={{
+                                    width: '48px',
+                                    height: '48px',
+                                    background: 'linear-gradient(135deg, #2c5364 0%, #203a43 100%)',
+                                    borderRadius: '10px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    boxShadow: '0 2px 8px rgba(44, 83, 100, 0.3)'
+                                }}>
+                                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                                        <path d="M14 3L24 8.5V19.5L14 25L4 19.5V8.5L14 3Z" stroke="white" strokeWidth="2" fill="none"/>
+                                        <path d="M14 10L19 13V19L14 22L9 19V13L14 10Z" fill="white" opacity="0.9"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                                        <span style={{fontSize: '1.1rem', fontWeight: 700, color: '#2c5364', letterSpacing: '-0.02em'}}>SAMPLE</span>
+                                        <span style={{fontSize: '1.1rem', fontWeight: 400, color: '#666'}}>COMPANY</span>
+                                    </div>
+                                    <h1 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700, color: '#1a1a1a', marginTop: '0.15rem'}}>
+                                        Employer-Sponsored Childcare Subsidy Program
+                                    </h1>
+                                </div>
+                            </div>
+                            <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.75rem',
+                                padding: '0.5rem 1rem',
+                                borderRadius: '8px',
+                                background: '#f8f9fa'
+                            }}>
+                                <div style={{
+                                    width: '36px',
+                                    height: '36px',
+                                    borderRadius: '50%',
+                                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    color: 'white',
+                                    fontWeight: 600
+                                }}>SC</div>
+                                <div>
+                                    <div style={{fontWeight: 600, fontSize: '0.9rem'}}>Sarah Chen</div>
+                                    <div style={{fontSize: '0.75rem', color: '#666'}}>CFO</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style={{background: 'white', borderBottom: '1px solid rgba(0,0,0,0.08)', padding: '0 3rem'}}>
+                        <div style={{maxWidth: '1400px', margin: '0 auto', display: 'flex', gap: '2rem'}}>
+                            {['dashboard', 'invoices', 'documents', 'employees', 'employee wallets'].map(tab => (
+                                <button
+                                    key={tab}
+                                    onClick={() => setActiveTab(tab)}
+                                    style={{
+                                        padding: '1rem 0',
+                                        border: 'none',
+                                        background: 'none',
+                                        cursor: 'pointer',
+                                        fontWeight: 600,
+                                        fontSize: '0.9rem',
+                                        color: activeTab === tab ? '#2c5364' : '#666',
+                                        borderBottom: activeTab === tab ? '3px solid #2c5364' : '3px solid transparent',
+                                        fontFamily: "'DM Sans', sans-serif",
+                                        textTransform: 'capitalize'
+                                    }}
+                                >
+                                    {tab}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div style={{maxWidth: '1400px', margin: '0 auto', padding: '3rem'}}>
+                        {activeTab === 'dashboard' && (
+                            <div>
+                                <div style={{marginBottom: '2.5rem'}}>
+                                    <h2 style={{fontFamily: "'Crimson Pro', serif", fontSize: '2.25rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem'}}>
+                                        Employer Dashboard
+                                    </h2>
+                                    <p style={{color: 'rgba(255,255,255,0.8)'}}>2026 Overview</p>
+                                </div>
+
+                                <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem'}}>
+                                    {[
+                                        {label: 'Enrolled Employees', value: '12', change: '+2 from last month', color: '#667eea'},
+                                        {label: 'Monthly Employer Budget', value: '$6K', change: 'On track', color: '#11998e'},
+                                        {label: 'YTD Employer Spend', value: '$60K', change: '10 months tracked', color: '#2193b0'},
+                                        {label: 'Est. Tax Credit', value: '$30K', change: '50% of spend', color: '#f2994a'}
+                                    ].map((metric, i) => (
+                                        <div key={i} style={{
+                                            background: 'white',
+                                            borderRadius: '16px',
+                                            padding: '2rem',
+                                            boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
+                                            textAlign: 'center'
+                                        }}>
+                                            <div style={{fontSize: '0.85rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem'}}>
+                                                {metric.label}
+                                            </div>
+                                            <div style={{fontFamily: "'Crimson Pro', serif", fontSize: '2.5rem', fontWeight: 700, marginBottom: '0.25rem'}}>
+                                                {metric.value}
+                                            </div>
+                                            <div style={{fontSize: '0.85rem', color: '#10b981', fontWeight: 500}}>
+                                                {metric.change}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+                                        <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>Pending Actions</h3>
+                                        <span style={{color: '#e74c3c', fontWeight: 600}}>2 items need attention</span>
+                                    </div>
+
+                                    {[
+                                        {provider: 'Bright Futures Learning Center', amount: 4250, children: 5, date: '2026-01-15'},
+                                        {provider: 'Mountain View Early Education', amount: 5950, children: 7, date: '2026-01-16'}
+                                    ].map((invoice, i) => (
+                                        <div key={i} style={{
+                                            border: '1px solid #e5e7eb',
+                                            borderRadius: '12px',
+                                            padding: '1.5rem',
+                                            marginBottom: '1rem',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s'
+                                        }}>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem'}}>
+                                                <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
+                                                    <div style={{
+                                                        width: '48px',
+                                                        height: '48px',
+                                                        borderRadius: '8px',
+                                                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        color: 'white',
+                                                        fontWeight: 700,
+                                                        fontSize: '1.25rem'
+                                                    }}>
+                                                        {invoice.provider.charAt(0)}
+                                                    </div>
+                                                    <div>
+                                                        <h4 style={{fontWeight: 600, marginBottom: '0.25rem'}}>{invoice.provider}</h4>
+                                                        <div style={{fontSize: '0.85rem', color: '#666'}}>License: CO-ECE-{8472 + i}</div>
+                                                    </div>
+                                                </div>
+                                                <div style={{
+                                                    background: '#fef3c7',
+                                                    color: '#92400e',
+                                                    padding: '0.5rem 1rem',
+                                                    borderRadius: '6px',
+                                                    fontSize: '0.85rem',
+                                                    fontWeight: 600,
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem'
+                                                }}>
+                                                    <Clock size={16} />
+                                                    Awaiting Approval
+                                                </div>
+                                            </div>
+                                            <div style={{
+                                                display: 'grid',
+                                                gridTemplateColumns: 'repeat(4, 1fr)',
+                                                gap: '1.5rem',
+                                                paddingTop: '1rem',
+                                                borderTop: '1px solid #e5e7eb'
+                                            }}>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem'}}>
+                                                        Invoice Date
+                                                    </label>
+                                                    <div style={{fontWeight: 600}}>{new Date(invoice.date).toLocaleDateString()}</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem'}}>
+                                                        Due Date
+                                                    </label>
+                                                    <div style={{fontWeight: 600}}>{new Date(invoice.date).toLocaleDateString()}</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem'}}>
+                                                        Children Served
+                                                    </label>
+                                                    <div style={{fontWeight: 600}}>{invoice.children}</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem'}}>
+                                                        Amount
+                                                    </label>
+                                                    <div style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2c5364'}}>
+                                                        ${invoice.amount.toLocaleString()}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'invoices' && (
+                            <div>
+                                <div style={{marginBottom: '2.5rem'}}>
+                                    <h2 style={{fontFamily: "'Crimson Pro', serif", fontSize: '2.25rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem'}}>
+                                        Invoice Management
+                                    </h2>
+                                    <p style={{color: 'rgba(255,255,255,0.8)'}}>All invoices and payment history</p>
+                                </div>
+
+                                <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                    {[
+                                        {id: 'INV-2026-001', provider: 'Bright Futures Learning Center', amount: 4250, children: 5, date: '2026-01-15', dueDate: '2026-01-25', status: 'pending', license: 'CO-ECE-8472'},
+                                        {id: 'INV-2026-002', provider: 'Mountain View Early Education', amount: 5950, children: 7, date: '2026-01-16', dueDate: '2026-01-26', status: 'pending', license: 'CO-ECE-9201'},
+                                        {id: 'INV-2025-012', provider: 'Bright Futures Learning Center', amount: 4250, children: 5, date: '2025-12-15', dueDate: '2025-12-25', status: 'paid', paidDate: '2025-12-22', license: 'CO-ECE-8472'}
+                                    ].map((invoice, i) => (
+                                        <div key={i} style={{
+                                            border: '1px solid #e5e7eb',
+                                            borderRadius: '12px',
+                                            padding: '1.5rem',
+                                            marginBottom: '1rem',
+                                            cursor: invoice.status === 'pending' ? 'pointer' : 'default',
+                                            transition: 'all 0.3s'
+                                        }}>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem'}}>
+                                                <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
+                                                    <div style={{
+                                                        width: '48px',
+                                                        height: '48px',
+                                                        borderRadius: '8px',
+                                                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        color: 'white',
+                                                        fontWeight: 700,
+                                                        fontSize: '1.25rem'
+                                                    }}>
+                                                        {invoice.provider.charAt(0)}
+                                                    </div>
+                                                    <div>
+                                                        <h4 style={{fontWeight: 600, marginBottom: '0.25rem'}}>{invoice.provider}</h4>
+                                                        <div style={{fontSize: '0.85rem', color: '#666', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                                                            <CheckCircle size={16} />
+                                                            License: {invoice.license}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {invoice.status === 'pending' ? (
+                                                    <div style={{
+                                                        background: '#fef3c7',
+                                                        color: '#92400e',
+                                                        padding: '0.5rem 1rem',
+                                                        borderRadius: '6px',
+                                                        fontSize: '0.85rem',
+                                                        fontWeight: 600,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '0.5rem'
+                                                    }}>
+                                                        <Clock size={16} />
+                                                        Awaiting Approval
+                                                    </div>
+                                                ) : (
+                                                    <div style={{
+                                                        background: '#d1fae5',
+                                                        color: '#065f46',
+                                                        padding: '0.5rem 1rem',
+                                                        borderRadius: '6px',
+                                                        fontSize: '0.85rem',
+                                                        fontWeight: 600,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '0.5rem'
+                                                    }}>
+                                                        <CheckCircle size={16} />
+                                                        Paid on {new Date(invoice.paidDate).toLocaleDateString()}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <div style={{
+                                                display: 'grid',
+                                                gridTemplateColumns: 'repeat(4, 1fr)',
+                                                gap: '1.5rem',
+                                                paddingTop: '1rem',
+                                                borderTop: '1px solid #e5e7eb'
+                                            }}>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem', fontWeight: 500}}>
+                                                        Invoice ID
+                                                    </label>
+                                                    <div style={{fontWeight: 600}}>{invoice.id}</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem', fontWeight: 500}}>
+                                                        Invoice Date
+                                                    </label>
+                                                    <div style={{fontWeight: 600}}>{new Date(invoice.date).toLocaleDateString()}</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem', fontWeight: 500}}>
+                                                        Children Served
+                                                    </label>
+                                                    <div style={{fontWeight: 600}}>{invoice.children}</div>
+                                                </div>
+                                                <div>
+                                                    <label style={{display: 'block', fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem', fontWeight: 500}}>
+                                                        Amount
+                                                    </label>
+                                                    <div style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700, color: '#2c5364'}}>
+                                                        ${invoice.amount.toLocaleString()}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'documents' && (
+                            <div>
+                                <div style={{marginBottom: '2.5rem'}}>
+                                    <h2 style={{fontFamily: "'Crimson Pro', serif", fontSize: '2.25rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem'}}>
+                                        Documents Center
+                                    </h2>
+                                    <p style={{color: 'rgba(255,255,255,0.8)'}}></p>
+                                </div>
+
+                                <div style={{display: 'flex', gap: '0.5rem', marginBottom: '2rem', borderBottom: '2px solid rgba(255,255,255,0.1)', flexWrap: 'wrap'}}>
+                                    {[
+                                        {id: 'overview', label: 'Overview'},
+                                        {id: 'licenses', label: 'Provider Licenses'},
+                                        {id: 'contracts', label: 'Contracts'},
+                                        {id: 'nondiscrimination', label: 'Nondiscrimination Policy'}
+                                    ].map(tab => (
+                                        <button
+                                            key={tab.id}
+                                            onClick={() => setComplianceSubTab(tab.id)}
+                                            style={{
+                                                padding: '0.75rem 1.5rem',
+                                                background: 'transparent',
+                                                border: 'none',
+                                                color: complianceSubTab === tab.id ? 'white' : 'rgba(255,255,255,0.7)',
+                                                fontWeight: 600,
+                                                fontSize: '0.9rem',
+                                                cursor: 'pointer',
+                                                borderBottom: complianceSubTab === tab.id ? '3px solid white' : '3px solid transparent',
+                                                fontFamily: "'DM Sans', sans-serif",
+                                                whiteSpace: 'nowrap'
+                                            }}
+                                        >
+                                            {tab.label}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                {complianceSubTab === 'overview' && (
+                                    <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                        <div style={{marginBottom: '2rem'}}>
+                                            <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>
+                                                Estimated 2026 Tax Credit Summary
+                                            </h3>
+                                        </div>
+
+                                        <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0'}}>
+                                                <span>Total Qualified Expenditures (YTD)</span>
+                                                <strong>$60,000</strong>
+                                            </div>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0'}}>
+                                                <span>Small Business Credit Rate</span>
+                                                <strong>50%</strong>
+                                            </div>
+                                            <div style={{
+                                                background: '#f0fdf4',
+                                                padding: '1.5rem',
+                                                borderRadius: '8px',
+                                                display: 'flex',
+                                                justifyContent: 'space-between',
+                                                margin: '1rem 0'
+                                            }}>
+                                                <span style={{fontSize: '1.1rem', fontWeight: 600}}>Estimated Federal Tax Credit</span>
+                                                <strong style={{fontSize: '2rem', color: '#065f46'}}>$30,000</strong>
+                                            </div>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0'}}>
+                                                <span>Net Cost to Company</span>
+                                                <strong>$30,000</strong>
+                                            </div>
+                                        </div>
+
+                                        <div style={{marginTop: '2rem', padding: '1.5rem', background: '#f0f9ff', borderRadius: '12px', borderLeft: '4px solid #0ea5e9'}}>
+                                            <h4 style={{marginBottom: '1rem', color: '#0c4a6e'}}>Documentation Status</h4>
+                                            <ul style={{listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem'}}>
+                                                {[
+                                                    'All provider licenses verified and current',
+                                                    'Contracts with qualified childcare facilities on file',
+                                                    'Invoices and payment records maintained',
+                                                    'Nondiscrimination policy documented'
+                                                ].map((item, i) => (
+                                                    <li key={i} style={{display: 'flex', alignItems: 'center', gap: '0.75rem'}}>
+                                                        <CheckCircle size={20} color="#10b981" />
+                                                        <span>{item}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {complianceSubTab === 'licenses' && (
+                                    <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+                                            <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>Provider Licenses</h3>
+                                            <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
+                                                <span style={{fontSize: '0.9rem', color: '#666'}}>2 Active | 1 Expiring Soon</span>
+                                                <button style={{
+                                                    padding: '0.75rem 1.5rem',
+                                                    border: '1px solid #e5e7eb',
+                                                    background: 'white',
+                                                    borderRadius: '8px',
+                                                    fontWeight: 600,
+                                                    fontSize: '0.9rem',
+                                                    cursor: 'pointer',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem'
+                                                }}>
+                                                    <Download size={18} />
+                                                    Export All
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {[
+                                            {name: 'Bright Futures Learning Center', license: 'CO-ECE-8472', status: 'current', issued: '2023-06-15', expires: '2027-06-15', address: '1234 Maple Street, Denver, CO 80202', capacity: 60},
+                                            {name: 'Mountain View Early Education', license: 'CO-ECE-9201', status: 'current', issued: '2024-01-10', expires: '2028-01-10', address: '567 Pine Avenue, Boulder, CO 80301', capacity: 80},
+                                            {name: 'Sunshine Kids Academy', license: 'CO-ECE-7856', status: 'expiring', issued: '2022-03-20', expires: '2026-03-20', address: '890 Oak Boulevard, Aurora, CO 80012', capacity: 45}
+                                        ].map((provider, i) => (
+                                            <div key={i} style={{
+                                                background: 'white',
+                                                borderRadius: '12px',
+                                                padding: '1.5rem',
+                                                marginBottom: '1rem',
+                                                border: '1px solid #e5e7eb'
+                                            }}>
+                                                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1rem'}}>
+                                                    <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
+                                                        <div style={{
+                                                            width: '56px',
+                                                            height: '56px',
+                                                            borderRadius: '12px',
+                                                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            justifyContent: 'center',
+                                                            color: 'white',
+                                                            fontWeight: 700,
+                                                            fontSize: '1.5rem'
+                                                        }}>
+                                                            {provider.name.charAt(0)}
+                                                        </div>
+                                                        <div>
+                                                            <div style={{fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem'}}>{provider.name}</div>
+                                                            <div style={{color: '#666', fontSize: '0.85rem'}}>Licensed Center</div>
+                                                        </div>
+                                                    </div>
+                                                    <div style={{
+                                                        padding: '0.5rem 1rem',
+                                                        borderRadius: '6px',
+                                                        fontSize: '0.85rem',
+                                                        fontWeight: 600,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '0.5rem',
+                                                        background: provider.status === 'current' ? '#d1fae5' : '#fef3c7',
+                                                        color: provider.status === 'current' ? '#065f46' : '#92400e'
+                                                    }}>
+                                                        {provider.status === 'current' ? <CheckCircle size={16} /> : <Clock size={16} />}
+                                                        {provider.status === 'current' ? 'Current' : 'Expiring Soon'}
+                                                    </div>
+                                                </div>
+                                                <div style={{
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                                                    gap: '1rem',
+                                                    paddingTop: '1rem',
+                                                    borderTop: '1px solid #e5e7eb'
+                                                }}>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>License Number</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{provider.license}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Issue Date</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{new Date(provider.issued).toLocaleDateString()}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Expiration Date</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{new Date(provider.expires).toLocaleDateString()}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Capacity</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{provider.capacity} children</div>
+                                                    </div>
+                                                    <div style={{gridColumn: '1 / -1'}}>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Address</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{provider.address}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {complianceSubTab === 'contracts' && (
+                                    <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+                                            <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>Contracts with Qualified Childcare Facilities</h3>
+                                            <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
+                                                <span style={{fontSize: '0.9rem', color: '#666'}}>2 Active Contracts</span>
+                                                <button style={{
+                                                    padding: '0.75rem 1.5rem',
+                                                    border: '1px solid #e5e7eb',
+                                                    background: 'white',
+                                                    borderRadius: '8px',
+                                                    fontWeight: 600,
+                                                    fontSize: '0.9rem',
+                                                    cursor: 'pointer',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '0.5rem'
+                                                }}>
+                                                    <Download size={18} />
+                                                    Export All
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {[
+                                            {provider: 'Bright Futures Learning Center', number: 'GRY-BFL-2025-001', signed: '2025-01-05', start: '2025-02-01', end: '2026-12-31', status: 'active', slots: 8, rate: 850},
+                                            {provider: 'Mountain View Early Education', number: 'GRY-MVE-2025-002', signed: '2025-01-12', start: '2025-02-01', end: '2026-12-31', status: 'active', slots: 10, rate: 850},
+                                            {provider: 'Sunshine Kids Academy', number: 'GRY-SKA-2024-003', signed: '2024-06-10', start: '2024-07-01', end: '2025-06-30', status: 'expiring', slots: 5, rate: 850}
+                                        ].map((contract, i) => (
+                                            <div key={i} style={{
+                                                background: 'white',
+                                                borderRadius: '12px',
+                                                padding: '1.5rem',
+                                                marginBottom: '1rem',
+                                                border: '1px solid #e5e7eb'
+                                            }}>
+                                                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e5e7eb'}}>
+                                                    <div>
+                                                        <h4 style={{fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem'}}>{contract.provider}</h4>
+                                                        <div style={{fontFamily: 'monospace', color: '#666', fontSize: '0.85rem'}}>Contract #{contract.number}</div>
+                                                    </div>
+                                                    <div style={{
+                                                        padding: '0.5rem 1rem',
+                                                        borderRadius: '6px',
+                                                        fontSize: '0.85rem',
+                                                        fontWeight: 600,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '0.5rem',
+                                                        background: contract.status === 'active' ? '#d1fae5' : '#fef3c7',
+                                                        color: contract.status === 'active' ? '#065f46' : '#92400e'
+                                                    }}>
+                                                        {contract.status === 'active' ? <CheckCircle size={16} /> : <Clock size={16} />}
+                                                        {contract.status === 'active' ? 'Active' : 'Expiring Soon'}
+                                                    </div>
+                                                </div>
+                                                <div style={{
+                                                    display: 'grid',
+                                                    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                                                    gap: '1.25rem'
+                                                }}>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Signed Date</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{new Date(contract.signed).toLocaleDateString()}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Start Date</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{new Date(contract.start).toLocaleDateString()}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>End Date</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{new Date(contract.end).toLocaleDateString()}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Reserved Slots</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{contract.slots} slots</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Monthly Rate</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>${contract.rate}/child</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>Total Monthly Value</label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>${(contract.slots * contract.rate).toLocaleString()}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
+                                {complianceSubTab === 'nondiscrimination' && (
+                                    <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', paddingBottom: '1.5rem', borderBottom: '2px solid #e5e7eb'}}>
+                                            <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.75rem', fontWeight: 700}}>Nondiscrimination Policy</h3>
+                                            <button style={{
+                                                padding: '0.75rem 1.5rem',
+                                                border: '1px solid #e5e7eb',
+                                                background: 'white',
+                                                borderRadius: '8px',
+                                                fontWeight: 600,
+                                                fontSize: '0.9rem',
+                                                cursor: 'pointer',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '0.5rem'
+                                            }}>
+                                                <Download size={18} />
+                                                Download PDF
+                                            </button>
+                                        </div>
+
+                                        <div style={{lineHeight: 1.8, color: '#374151'}}>
+                                            <p style={{marginBottom: '1rem'}}><strong>Effective Date:</strong> January 1, 2026</p>
+                                            <p style={{marginBottom: '1rem'}}><strong>Last Revised:</strong> January 1, 2026</p>
+
+                                            <h4 style={{fontWeight: 700, marginTop: '2rem', marginBottom: '1rem', fontSize: '1.1rem'}}>1. Policy Statement</h4>
+                                            <p style={{marginBottom: '1rem'}}>
+                                                Sample Company is committed to providing equal access to childcare benefits for all eligible employees. 
+                                                This policy ensures compliance with IRC §45F requirements and demonstrates our commitment to 
+                                                nondiscrimination in the provision of employer-sponsored childcare services.
+                                            </p>
+
+                                            <h4 style={{fontWeight: 700, marginTop: '2rem', marginBottom: '1rem', fontSize: '1.1rem'}}>2. Eligibility Requirements</h4>
+                                            <p style={{marginBottom: '0.5rem'}}>All employees who meet the following criteria are eligible for childcare benefits:</p>
+                                            <ul style={{marginBottom: '1rem', paddingLeft: '2rem'}}>
+                                                <li style={{marginBottom: '0.5rem'}}>Full-time employees who have completed 90 days of employment</li>
+                                                <li style={{marginBottom: '0.5rem'}}>Part-time employees working 20+ hours per week who have completed 180 days of employment</li>
+                                                <li style={{marginBottom: '0.5rem'}}>Employees with dependent children ages 0-12 years old</li>
+                                            </ul>
+
+                                            <h4 style={{fontWeight: 700, marginTop: '2rem', marginBottom: '1rem', fontSize: '1.1rem'}}>3. Nondiscrimination Requirements</h4>
+                                            <p style={{marginBottom: '0.5rem'}}>Sample Company ensures that:</p>
+                                            <ul style={{marginBottom: '1rem', paddingLeft: '2rem'}}>
+                                                <li style={{marginBottom: '0.5rem'}}>Benefits are available to all eligible employees on the same terms regardless of position, title, or compensation level</li>
+                                                <li style={{marginBottom: '0.5rem'}}>No preference is given to highly compensated employees (HCEs) as defined by the IRS</li>
+                                                <li style={{marginBottom: '0.5rem'}}>Enrollment is open and accessible to employees at all organizational levels</li>
+                                                <li style={{marginBottom: '0.5rem'}}>Communication about benefits is distributed equitably across all departments and locations</li>
+                                            </ul>
+
+                                            <div style={{marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px solid #e5e7eb'}}>
+                                                <p style={{marginBottom: '0.5rem'}}><strong>Certified by:</strong></p>
+                                                <p>Sarah Chen, Chief Financial Officer</p>
+                                                <p>Date: January 1, 2026</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+
+                            </div>
+                        )}
+
+                        {activeTab === 'employees' && (
+                            <div>
+                                <div style={{marginBottom: '2.5rem'}}>
+                                    <h2 style={{fontFamily: "'Crimson Pro', serif", fontSize: '2.25rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem'}}>
+                                        Employee Enrollment
+                                    </h2>
+                                    <p style={{color: 'rgba(255,255,255,0.8)'}}>Childcare benefit participants and subsidy tracking</p>
+                                </div>
+
+                                <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '2rem'}}>
+                                    {[
+                                        {label: 'Total Enrolled', value: '12'},
+                                        {label: 'Total Children', value: '12'},
+                                        {label: 'Monthly Employer Subsidy', value: '$6,000'}
+                                    ].map((stat, i) => (
+                                        <div key={i} style={{padding: '1.5rem', background: 'white', borderRadius: '12px', border: '1px solid #e5e7eb', textAlign: 'center'}}>
+                                            <div style={{fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 500}}>
+                                                {stat.label}
+                                            </div>
+                                            <div style={{fontFamily: "'Crimson Pro', serif", fontSize: '2rem', fontWeight: 700}}>
+                                                {stat.value}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', marginBottom: '2rem'}}>
+                                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+                                        <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>
+                                            Enrolled Employees
+                                        </h3>
+                                        <button style={{
+                                            padding: '0.75rem 1.5rem',
+                                            border: '1px solid #e5e7eb',
+                                            background: 'white',
+                                            borderRadius: '8px',
+                                            fontWeight: 600,
+                                            fontSize: '0.9rem',
+                                            cursor: 'pointer',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem'
+                                        }}>
+                                            <Download size={18} />
+                                            Export List
+                                        </button>
+                                    </div>
+
+                                    <div style={{overflowX: 'auto'}}>
+                                        <table style={{width: '100%', borderCollapse: 'separate', borderSpacing: 0, border: '1px solid #e5e7eb', borderRadius: '12px', overflow: 'hidden'}}>
+                                            <thead>
+                                                <tr style={{background: '#f9fafb'}}>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Employee</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Dept</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Child</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Provider</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Enrolled</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Employer</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>State</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Philanthropy</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>Total</th>
+                                                    <th style={{padding: '0.75rem 0.5rem', textAlign: 'left', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.02em', borderBottom: '2px solid #e5e7eb'}}>YTD</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {[
+                                                    {id: 'EMP-1043', name: 'Emma Rodriguez', dept: 'Engineering', child: 'Emma Rodriguez Jr.', age: 3, provider: 'Bright Futures Learning Center', enrolled: '2025-06-15', employerSubsidy: 500, stateFunding: 200, philanthropy: 500, ytd: 8400},
+                                                    {id: 'EMP-2156', name: 'Noah Chen', dept: 'Product', child: 'Lily Chen', age: 2, provider: 'Bright Futures Learning Center', enrolled: '2025-07-01', employerSubsidy: 500, stateFunding: 300, philanthropy: 500, ytd: 7800},
+                                                    {id: 'EMP-0987', name: 'Sophia Martinez', dept: 'Marketing', child: 'Diego Martinez', age: 4, provider: 'Bright Futures Learning Center', enrolled: '2025-08-10', employerSubsidy: 500, stateFunding: 0, philanthropy: 500, ytd: 5000},
+                                                    {id: 'EMP-1834', name: 'Liam Thompson', dept: 'Sales', child: 'Ava Thompson', age: 1, provider: 'Bright Futures Learning Center', enrolled: '2025-06-15', employerSubsidy: 500, stateFunding: 400, philanthropy: 500, ytd: 9800},
+                                                    {id: 'EMP-2901', name: 'Olivia Patel', dept: 'Engineering', child: 'Arjun Patel', age: 3, provider: 'Bright Futures Learning Center', enrolled: '2025-07-20', employerSubsidy: 500, stateFunding: 250, philanthropy: 500, ytd: 7500},
+                                                    {id: 'EMP-3421', name: 'Ava Johnson', dept: 'Operations', child: 'Mason Johnson', age: 2, provider: 'Mountain View Early Education', enrolled: '2025-06-01', employerSubsidy: 500, stateFunding: 0, philanthropy: 500, ytd: 8000},
+                                                    {id: 'EMP-1209', name: 'Jackson Davis', dept: 'Finance', child: 'Emma Davis', age: 4, provider: 'Mountain View Early Education', enrolled: '2025-08-15', employerSubsidy: 500, stateFunding: 0, philanthropy: 500, ytd: 5000},
+                                                    {id: 'EMP-4567', name: 'Mia Wilson', dept: 'HR', child: 'Oliver Wilson', age: 3, provider: 'Mountain View Early Education', enrolled: '2025-06-15', employerSubsidy: 500, stateFunding: 200, philanthropy: 500, ytd: 8400},
+                                                    {id: 'EMP-2198', name: 'Lucas Anderson', dept: 'Engineering', child: 'Charlotte Anderson', age: 1, provider: 'Mountain View Early Education', enrolled: '2025-09-01', employerSubsidy: 500, stateFunding: 300, philanthropy: 500, ytd: 5200},
+                                                    {id: 'EMP-3890', name: 'Harper White', dept: 'Design', child: 'James White', age: 5, provider: 'Mountain View Early Education', enrolled: '2025-07-10', employerSubsidy: 500, stateFunding: 0, philanthropy: 500, ytd: 6000},
+                                                    {id: 'EMP-1672', name: 'Ethan Brown', dept: 'Sales', child: 'Sophia Brown', age: 2, provider: 'Mountain View Early Education', enrolled: '2025-08-01', employerSubsidy: 500, stateFunding: 0, philanthropy: 500, ytd: 5000},
+                                                    {id: 'EMP-2445', name: 'Amelia Garcia', dept: 'Marketing', child: 'Benjamin Garcia', age: 4, provider: 'Mountain View Early Education', enrolled: '2025-06-20', employerSubsidy: 500, stateFunding: 0, philanthropy: 500, ytd: 7000}
+                                                ].map((emp, i, arr) => (
+                                                    <tr key={i} style={{borderBottom: i === arr.length - 1 ? 'none' : '1px solid #e5e7eb'}}>
+                                                        <td style={{padding: '0.5rem', color: '#374151', fontSize: '0.8rem'}}>
+                                                            <div style={{fontWeight: 600, color: '#1a1a1a'}}>{emp.name}</div>
+                                                        </td>
+                                                        <td style={{padding: '0.5rem', color: '#374151', fontSize: '0.8rem'}}>{emp.dept}</td>
+                                                        <td style={{padding: '0.5rem', color: '#374151', fontSize: '0.8rem'}}>
+                                                            <div style={{fontWeight: 500, color: '#1a1a1a'}}>{emp.child.split(' ')[0]}</div>
+                                                            <div style={{fontSize: '0.75rem', color: '#666'}}>{emp.age}y</div>
+                                                        </td>
+                                                        <td style={{padding: '0.5rem', color: '#374151', fontSize: '0.75rem'}}>{emp.provider.split(' ').slice(0, 2).join(' ')}</td>
+                                                        <td style={{padding: '0.5rem', color: '#374151', fontSize: '0.8rem'}}>{new Date(emp.enrolled).toLocaleDateString()}</td>
+                                                        <td style={{padding: '0.5rem', fontWeight: 600, color: '#2c5364', fontSize: '0.85rem'}}>${emp.employerSubsidy}</td>
+                                                        <td style={{padding: '0.5rem', fontWeight: 600, color: emp.stateFunding > 0 ? '#ea580c' : '#9ca3af', fontSize: '0.85rem'}}>{emp.stateFunding > 0 ? `$${emp.stateFunding}` : '—'}</td>
+                                                        <td style={{padding: '0.5rem', fontWeight: 600, color: emp.philanthropy > 0 ? '#7c3aed' : '#9ca3af', fontSize: '0.85rem'}}>{emp.philanthropy > 0 ? `$${emp.philanthropy}` : '—'}</td>
+                                                        <td style={{padding: '0.5rem', fontWeight: 700, fontSize: '0.9rem', color: '#065f46'}}>${(emp.employerSubsidy + emp.stateFunding + emp.philanthropy).toLocaleString()}</td>
+                                                        <td style={{padding: '0.5rem', fontWeight: 700, fontSize: '0.9rem', color: '#2c5364'}}>${emp.ytd.toLocaleString()}</td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                    <div style={{marginBottom: '2rem'}}>
+                                        <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>
+                                            Provider Distribution
+                                        </h3>
+                                    </div>
+
+                                    <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem'}}>
+                                        {[
+                                            {name: 'Bright Futures Learning Center', letter: 'B', count: 5, cost: 4250},
+                                            {name: 'Mountain View Early Education', letter: 'M', count: 7, cost: 5950}
+                                        ].map((provider, i) => (
+                                            <div key={i} style={{
+                                                background: 'white',
+                                                borderRadius: '12px',
+                                                padding: '1.5rem',
+                                                border: '1px solid #e5e7eb'
+                                            }}>
+                                                <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem'}}>
+                                                    <div style={{
+                                                        width: '56px',
+                                                        height: '56px',
+                                                        borderRadius: '12px',
+                                                        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        color: 'white',
+                                                        fontWeight: 700,
+                                                        fontSize: '1.5rem'
+                                                    }}>
+                                                        {provider.letter}
+                                                    </div>
+                                                    <div>
+                                                        <div style={{fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.25rem'}}>{provider.name}</div>
+                                                        <div style={{color: '#666', fontSize: '0.85rem'}}>Licensed Center</div>
+                                                    </div>
+                                                </div>
+                                                <div style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', paddingTop: '1rem', borderTop: '1px solid #e5e7eb'}}>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>
+                                                            Enrolled Employees
+                                                        </label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>{provider.count}</div>
+                                                    </div>
+                                                    <div>
+                                                        <label style={{display: 'block', fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.25rem'}}>
+                                                            Monthly Cost
+                                                        </label>
+                                                        <div style={{fontWeight: 600, fontSize: '0.95rem'}}>${provider.cost.toLocaleString()}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'employee wallets' && (
+                            <div>
+                                <div style={{marginBottom: '2.5rem'}}>
+                                    <h2 style={{fontFamily: "'Crimson Pro', serif", fontSize: '2.25rem', fontWeight: 700, color: 'white', marginBottom: '0.5rem'}}>
+                                        Employee Wallets
+                                    </h2>
+                                    <p style={{color: 'rgba(255,255,255,0.8)'}}>Combined funding sources for each employee's childcare benefit</p>
+                                </div>
+
+                                <div style={{display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', marginBottom: '2rem'}}>
+                                    {[
+                                        {label: 'Total Employer Funding', value: '$6,000', color: '#2c5364'},
+                                        {label: 'Total State Funding', value: '$1,650', color: '#ea580c'},
+                                        {label: 'Total Philanthropy', value: '$6,000', color: '#7c3aed'},
+                                        {label: 'Combined Monthly', value: '$13,650', color: '#065f46'}
+                                    ].map((stat, i) => (
+                                        <div key={i} style={{padding: '1.5rem', background: 'white', borderRadius: '12px', border: '1px solid #e5e7eb'}}>
+                                            <div style={{fontSize: '0.85rem', color: '#666', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 500}}>
+                                                {stat.label}
+                                            </div>
+                                            <div style={{fontFamily: "'Crimson Pro', serif", fontSize: '2rem', fontWeight: 700, color: stat.color}}>
+                                                {stat.value}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', marginBottom: '2rem'}}>
+                                    <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700, marginBottom: '1.5rem'}}>
+                                        Funding Source Details
+                                    </h3>
+
+                                    <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem'}}>
+                                        <div style={{padding: '1.5rem', background: '#f8fafc', borderRadius: '12px', borderLeft: '4px solid #2c5364'}}>
+                                            <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem'}}>
+                                                <div style={{width: '40px', height: '40px', borderRadius: '8px', background: '#2c5364', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 700}}>E</div>
+                                                <div>
+                                                    <div style={{fontWeight: 700, fontSize: '1rem'}}>Employer Funding</div>
+                                                    <div style={{fontSize: '0.85rem', color: '#666'}}>Sample Company</div>
+                                                </div>
+                                            </div>
+                                            <div style={{fontSize: '0.9rem', color: '#374151', lineHeight: 1.6, marginBottom: '1rem'}}>
+                                                Direct employer contribution to employee childcare costs, eligible for §45F tax credit.
+                                            </div>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', paddingTop: '1rem', borderTop: '1px solid #e5e7eb'}}>
+                                                <span style={{color: '#666'}}>Monthly Total</span>
+                                                <span style={{fontWeight: 700, color: '#2c5364'}}>$6,000</span>
+                                            </div>
+                                        </div>
+
+                                        <div style={{padding: '1.5rem', background: '#fff7ed', borderRadius: '12px', borderLeft: '4px solid #ea580c'}}>
+                                            <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem'}}>
+                                                <div style={{width: '40px', height: '40px', borderRadius: '8px', background: '#ea580c', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 700}}>S</div>
+                                                <div>
+                                                    <div style={{fontWeight: 700, fontSize: '1rem'}}>State Funding</div>
+                                                    <div style={{fontSize: '0.85rem', color: '#666'}}>Colorado CCCAP</div>
+                                                </div>
+                                            </div>
+                                            <div style={{fontSize: '0.9rem', color: '#374151', lineHeight: 1.6, marginBottom: '1rem'}}>
+                                                State childcare assistance program funding for eligible families based on income.
+                                            </div>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', paddingTop: '1rem', borderTop: '1px solid #e5e7eb'}}>
+                                                <span style={{color: '#666'}}>Monthly Total</span>
+                                                <span style={{fontWeight: 700, color: '#ea580c'}}>$1,650</span>
+                                            </div>
+                                        </div>
+
+                                        <div style={{padding: '1.5rem', background: '#faf5ff', borderRadius: '12px', borderLeft: '4px solid #7c3aed'}}>
+                                            <div style={{display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem'}}>
+                                                <div style={{width: '40px', height: '40px', borderRadius: '8px', background: '#7c3aed', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 700}}>P</div>
+                                                <div>
+                                                    <div style={{fontWeight: 700, fontSize: '1rem'}}>Philanthropy</div>
+                                                    <div style={{fontSize: '0.85rem', color: '#666'}}>Local Foundation</div>
+                                                </div>
+                                            </div>
+                                            <div style={{fontSize: '0.9rem', color: '#374151', lineHeight: 1.6, marginBottom: '1rem'}}>
+                                                Philanthropic grants to supplement childcare costs for qualifying employees.
+                                            </div>
+                                            <div style={{display: 'flex', justifyContent: 'space-between', paddingTop: '1rem', borderTop: '1px solid #e5e7eb'}}>
+                                                <span style={{color: '#666'}}>Monthly Total</span>
+                                                <span style={{fontWeight: 700, color: '#7c3aed'}}>$6,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style={{background: 'white', borderRadius: '16px', padding: '2rem', boxShadow: '0 4px 24px rgba(0,0,0,0.08)'}}>
+                                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem'}}>
+                                        <h3 style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.5rem', fontWeight: 700}}>
+                                            Funding Sources by Employee
+                                        </h3>
+                                        <button style={{
+                                            padding: '0.75rem 1.5rem',
+                                            border: '1px solid #e5e7eb',
+                                            background: 'white',
+                                            borderRadius: '8px',
+                                            fontWeight: 600,
+                                            fontSize: '0.9rem',
+                                            cursor: 'pointer',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem'
+                                        }}>
+                                            <Download size={18} />
+                                            Export Report
+                                        </button>
+                                    </div>
+
+                                    <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+                                        {[
+                                            {id: 'EMP-1043', name: 'Emma Rodriguez', child: 'Emma Rodriguez Jr.', employer: 500, state: 200, philanthropy: 500},
+                                            {id: 'EMP-2156', name: 'Noah Chen', child: 'Lily Chen', employer: 500, state: 300, philanthropy: 500},
+                                            {id: 'EMP-0987', name: 'Sophia Martinez', child: 'Diego Martinez', employer: 500, state: 0, philanthropy: 500},
+                                            {id: 'EMP-1834', name: 'Liam Thompson', child: 'Ava Thompson', employer: 500, state: 400, philanthropy: 500},
+                                            {id: 'EMP-2901', name: 'Olivia Patel', child: 'Arjun Patel', employer: 500, state: 250, philanthropy: 500},
+                                            {id: 'EMP-3421', name: 'Ava Johnson', child: 'Mason Johnson', employer: 500, state: 0, philanthropy: 500},
+                                            {id: 'EMP-1209', name: 'Jackson Davis', child: 'Emma Davis', employer: 500, state: 0, philanthropy: 500},
+                                            {id: 'EMP-4567', name: 'Mia Wilson', child: 'Oliver Wilson', employer: 500, state: 200, philanthropy: 500},
+                                            {id: 'EMP-2198', name: 'Lucas Anderson', child: 'Charlotte Anderson', employer: 500, state: 300, philanthropy: 500},
+                                            {id: 'EMP-3890', name: 'Harper White', child: 'James White', employer: 500, state: 0, philanthropy: 500},
+                                            {id: 'EMP-1672', name: 'Ethan Brown', child: 'Sophia Brown', employer: 500, state: 0, philanthropy: 500},
+                                            {id: 'EMP-2445', name: 'Amelia Garcia', child: 'Benjamin Garcia', employer: 500, state: 0, philanthropy: 500}
+                                        ].map((emp, i) => {
+                                            const total = emp.employer + emp.state + emp.philanthropy;
+                                            const employerPct = (emp.employer / total) * 100;
+                                            const statePct = (emp.state / total) * 100;
+                                            const philanthropyPct = (emp.philanthropy / total) * 100;
+
+                                            return (
+                                                <div key={i} style={{
+                                                    background: '#f9fafb',
+                                                    borderRadius: '12px',
+                                                    padding: '1.5rem',
+                                                    border: '1px solid #e5e7eb'
+                                                }}>
+                                                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: '1rem'}}>
+                                                        <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
+                                                            <div style={{
+                                                                width: '48px',
+                                                                height: '48px',
+                                                                borderRadius: '50%',
+                                                                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                                                display: 'flex',
+                                                                alignItems: 'center',
+                                                                justifyContent: 'center',
+                                                                color: 'white',
+                                                                fontWeight: 700,
+                                                                fontSize: '1.1rem'
+                                                            }}>
+                                                                {emp.name.split(' ').map(n => n[0]).join('')}
+                                                            </div>
+                                                            <div>
+                                                                <div style={{fontWeight: 700, fontSize: '1rem', marginBottom: '0.25rem'}}>{emp.name}</div>
+                                                                <div style={{fontSize: '0.85rem', color: '#666'}}>Child: {emp.child}</div>
+                                                            </div>
+                                                        </div>
+                                                        <div style={{textAlign: 'right'}}>
+                                                            <div style={{fontFamily: "'Crimson Pro', serif", fontSize: '1.75rem', fontWeight: 700, color: '#065f46'}}>
+                                                                ${total.toLocaleString()}
+                                                            </div>
+                                                            <div style={{fontSize: '0.85rem', color: '#666'}}>Monthly Total</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div style={{
+                                                        height: '12px',
+                                                        borderRadius: '6px',
+                                                        overflow: 'hidden',
+                                                        display: 'flex',
+                                                        marginBottom: '1rem'
+                                                    }}>
+                                                        <div style={{width: `${employerPct}%`, background: '#2c5364', transition: 'width 0.3s'}}></div>
+                                                        <div style={{width: `${statePct}%`, background: '#ea580c', transition: 'width 0.3s'}}></div>
+                                                        <div style={{width: `${philanthropyPct}%`, background: '#7c3aed', transition: 'width 0.3s'}}></div>
+                                                    </div>
+
+                                                    <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem'}}>
+                                                        <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                                                            <div style={{width: '12px', height: '12px', borderRadius: '3px', background: '#2c5364'}}></div>
+                                                            <div>
+                                                                <div style={{fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em'}}>Employer</div>
+                                                                <div style={{fontWeight: 700, color: '#2c5364'}}>${emp.employer}</div>
+                                                            </div>
+                                                        </div>
+                                                        <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                                                            <div style={{width: '12px', height: '12px', borderRadius: '3px', background: '#ea580c'}}></div>
+                                                            <div>
+                                                                <div style={{fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em'}}>State</div>
+                                                                <div style={{fontWeight: 700, color: emp.state > 0 ? '#ea580c' : '#9ca3af'}}>{emp.state > 0 ? `$${emp.state}` : '—'}</div>
+                                                            </div>
+                                                        </div>
+                                                        <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                                                            <div style={{width: '12px', height: '12px', borderRadius: '3px', background: '#7c3aed'}}></div>
+                                                            <div>
+                                                                <div style={{fontSize: '0.75rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em'}}>Philanthropy</div>
+                                                                <div style={{fontWeight: 700, color: emp.philanthropy > 0 ? '#7c3aed' : '#9ca3af'}}>{emp.philanthropy > 0 ? `$${emp.philanthropy}` : '—'}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<EmployerPortal />);
+    </script>
+</body>
+</html>
