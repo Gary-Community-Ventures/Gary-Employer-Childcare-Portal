@@ -1566,7 +1566,10 @@
 
         // Signup Section
         const SignupSection = () => {
-            const { t } = useLanguage();
+            const { t, language } = useLanguage();
+            const formUrl = language === 'es'
+                ? 'https://c151s.share-na2.hsforms.com/2e6JoZtaeRAWsxsk1b1gtNg'
+                : 'https://c151s.share-na2.hsforms.com/2e1z3cq8sSo-Tu8ZmKYVu0Q';
             return (
                 <section id="signup" style={{ padding: '6rem 2rem', background: 'linear-gradient(135deg, #1a1a2e 0%, #2c5364 100%)', color: 'white' }}>
                     <div style={{ maxWidth: '800px', margin: '0 auto' }}>
@@ -1604,7 +1607,7 @@
                                 {t('signupReadyDesc')}
                             </p>
                             <a
-                                href="https://c151s.share-na2.hsforms.com/2e1z3cq8sSo-Tu8ZmKYVu0Q"
+                                href={formUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={{
