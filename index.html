@@ -124,7 +124,345 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect } = React;
+        const { useState, useEffect, createContext, useContext } = React;
+
+        // Language Context
+        const LanguageContext = createContext();
+
+        const useLanguage = () => useContext(LanguageContext);
+
+        // Translations
+        const translations = {
+            en: {
+                // Navigation
+                navHowItWorks: "How It Works",
+                navCalculator: "ROI Calculator",
+                navMatching: "Matching Program",
+                navFAQ: "FAQ",
+                navExpressInterest: "Express Interest",
+                navProgramName: "Employer Childcare Program",
+                navProgramNameShort: "ECP",
+
+                // Hero Section
+                heroBadge: "2026 Pilot Program",
+                heroTitle1: "Support Your Employees' Childcare.",
+                heroTitle2: " We'll Match Your Investment.",
+                heroDescription: "Childcare works best when the responsibility is shared. We help Colorado employers provide childcare benefits through a tri-share model—families, employers, and philanthropy each contributing to make quality care affordable.",
+                heroExpressInterest: "Express Interest",
+                heroCalculateSavings: "Calculate Your Savings",
+                heroStat1Value: "$680M",
+                heroStat1Label: "Lost annually by CO employers",
+                heroStat2Value: "Up to 50%",
+                heroStat2Label: "Philanthropic match available",
+                heroStat3Value: "3-5",
+                heroStat3Label: "Pilot spots available",
+                heroExampleTitle: "Quick Example: With 50% Match",
+                heroExampleBadge: "Matched Funding",
+                heroEmployeesEnrolled: "Employees enrolled",
+                heroTotalMonthlyBenefit: "Total monthly benefit per employee",
+                heroYourContribution: "Your contribution (50%)",
+                heroPhilanthropicMatch: "Gary's Philanthropic Match (50%)",
+                heroNetAnnualCost: "Your Net Annual Cost",
+                heroPerEmployeeWithMatch: "$250/employee/month with match",
+
+                // Problem Section
+                problemTitle: "The Childcare Crisis Is a Business Problem",
+                problemDescription: "Colorado employers lose hundreds of millions annually to childcare-related challenges. The impact on your workforce is measurable.",
+                problemStat1: "$15,600",
+                problemStat1Label: "Average annual cost of infant care in Colorado",
+                problemStat1Subtext: "31% of average parent income",
+                problemStat2: "2.5 hrs",
+                problemStat2Label: "Lost work time per parent per week",
+                problemStat2Subtext: "Due to childcare challenges",
+                problemStat3: "16%",
+                problemStat3Label: "Of parents report being fired",
+                problemStat3Subtext: "Due to childcare access issues",
+                problemStat4: "10,200",
+                problemStat4Label: "Colorado mothers sidelined",
+                problemStat4Subtext: "$3.8B potential economic impact",
+
+                // How It Works Section
+                howItWorksTitle: "How the Program Works",
+                howItWorksDescription: "Based on the tri-share model: when employers, families, and philanthropic partners each contribute, childcare becomes affordable for everyone. We manage the infrastructure so you can focus on your business.",
+                howItWorksYourCompany: "Your Company",
+                howItWorksContributesFunds: "Contributes funds",
+                howItWorksGary: "Gary",
+                howItWorksPhilanthropicMatch: "+ Philanthropic Match",
+                howItWorksManagesAll: "Manages all paperwork & payments",
+                howItWorksProviders: "Licensed Providers",
+                howItWorksDirectPayment: "Direct payment",
+                howItWorksFeature1Title: "Philanthropic Matching",
+                howItWorksFeature1Desc: "Gary provides matching funds from philanthropic sources to amplify your investment and reduce your net cost per employee.",
+                howItWorksFeature2Title: "Restricted Wallet Infrastructure",
+                howItWorksFeature2Desc: "Funds flow directly from your business to licensed providers via Gary. No taxable \"cash-in-hand\" for employees.",
+                howItWorksFeature3Title: "Provider Network Access",
+                howItWorksFeature3Desc: "We manage relationships with licensed Colorado childcare providers. Your employees choose from vetted, qualified facilities.",
+
+                // Matching Section
+                matchingTitle: "Shared Responsibility Model",
+                matchingDescription: "Everyone benefits from stable childcare—employers, families, and communities. So everyone shares the cost. Our tri-share approach means your contribution goes further with philanthropic matching.",
+                matchingExample: "Example",
+                matchingPhilanthropicMatch: "Philanthropic Match",
+                matchingYourCost: "Your cost/employee/month",
+                matchingTotalBenefit: "Total benefit to employee",
+                matchingHowItWorksTitle: "How Matching Works",
+                matchingHowItWorksDesc: "Your contribution goes directly to licensed childcare providers on behalf of your employees. Gary adds philanthropic matching funds to increase the total benefit—so your employees receive more support while your costs stay manageable.",
+
+                // FAQ Section
+                faqTitle: "Frequently Asked Questions",
+                faqDescription: "We're still shaping this pilot program and welcome your questions. Here's what we can share so far.",
+                faqQuestion1: "Who is running this pilot program?",
+                faqAnswer1: "This pilot is led by Gary Community Ventures, a Colorado-based organization dedicated to improving outcomes for kids and families. Gary works at the intersection of policy, philanthropy, and community investment to create systemic change. We're exploring innovative approaches to make quality childcare more accessible and affordable for working families across Colorado.",
+                faqQuestion2: "How long will the pilot run?",
+                faqAnswer2: "We're currently in the planning phase and are gathering input from interested employers to help shape the pilot's structure. The exact duration will depend on several factors, including available philanthropic matching funds, the number of participating employers, and the specific needs of enrolled families. We anticipate sharing more details as we finalize the program design.",
+                faqQuestion3: "How many employees can my company enroll?",
+                faqAnswer3: "Enrollment capacity will be determined based on input from participating companies and available philanthropic funding. We're gathering information from interested employers to understand workforce needs and will work with each pilot participant to determine appropriate enrollment levels that make sense for their organization and our matching capacity.",
+                faqQuestion4: "I just filled out the form. Does that mean I'm committing to the pilot?",
+                faqAnswer4: "No, filling out the interest form does not constitute a commitment. We're currently gathering information to understand employer interest and needs. Submitting the form simply indicates that you'd like to learn more and potentially be considered for participation. There will be additional conversations and a separate formal agreement process before any commitments are made.",
+                faqQuestion5: "What information are you gathering at this stage?",
+                faqAnswer5: "We're collecting preliminary information to help us understand employer interest, workforce sizes, and what match levels would be meaningful for potential participants. This helps us design a pilot that works for Colorado employers and their employees. We're still in the exploratory phase and welcome your input to shape the program.",
+                faqQuestion6: "Is there a cost to express interest?",
+                faqAnswer6: "There is no cost or obligation to express interest. We're simply gathering information at this stage to understand employer needs and gauge interest. Participating in the pilot itself would involve employer contributions as part of the shared-responsibility model, but those details will be discussed in depth before any commitments are made.",
+                faqQuestion7: "What types of childcare providers are included?",
+                faqAnswer7: "We're working to build a network of licensed Colorado childcare providers, including childcare centers and licensed family childcare homes. The specific provider network is still being developed, and we welcome input from employers about what would be most valuable for their employees' needs and locations.",
+                faqMoreQuestions: "Have more questions?",
+                faqContact: "We'd love to hear from you. Contact Leisan Garifullina at",
+
+                // Calculator Section
+                calcTitle: "Calculate Your Childcare ROI",
+                calcDescription: "See how much you could save on childcare with philanthropic matching.",
+                calcYourCompany: "Your Company",
+                calcEmployeesToEnroll: "Employees to Enroll",
+                calcTotalMonthlyBenefit: "Total Monthly Benefit per Employee",
+                calcMatchRate: "Philanthropic Match Rate",
+                calcAvgSalary: "Average Employee Salary",
+                calcTurnoverRate: "Current Annual Turnover Rate",
+                calcCostBreakdown: "Cost Breakdown",
+                calcTotalAnnualBenefit: "Total Annual Benefit to Employees",
+                calcPhilanthropicMatch: "Philanthropic Match",
+                calcYourAnnualCost: "Your Annual Cost",
+                calcPerEmployeeMonth: "/employee/month (your contribution)",
+                calcEstimatedSavings: "Estimated Annual Savings",
+                calcTurnoverReduction: "Turnover Cost Reduction (37%)",
+                calcAbsenteeismReduction: "Absenteeism Reduction (25%)",
+                calcTotalEstimatedSavings: "Total Estimated Savings",
+                calcEstimatedROI: "Estimated ROI",
+                calcMethodology: "Methodology:",
+                calcMethodologyText: "Turnover reduction of 37% and absenteeism reduction of 25% based on US Chamber of Commerce research. Replacement cost estimated at 85% of annual salary. Actual results may vary based on your specific workforce composition.",
+
+                // Benefits Section
+                benefitsTitle: "The Business Case for Childcare Benefits",
+                benefitsDescription: "Research consistently shows that childcare benefits deliver measurable ROI through reduced turnover, lower absenteeism, and improved productivity.",
+                benefitsStat1: "37-60%",
+                benefitsStat1Title: "Reduction in Turnover",
+                benefitsStat1Source: "US Chamber of Commerce",
+                benefitsStat1Desc: "Employees are significantly more likely to stay when childcare benefits are provided.",
+                benefitsStat2: "20-30%",
+                benefitsStat2Title: "Decrease in Absences",
+                benefitsStat2Source: "US Chamber of Commerce",
+                benefitsStat2Desc: "Parents avoid 4-16 days of absences annually with reliable childcare access.",
+                benefitsStat3: "90-425%",
+                benefitsStat3Title: "ROI Range",
+                benefitsStat3Source: "BCG/Moms First Study",
+                benefitsStat3Desc: "Five companies studied showed significant returns on childcare investment.",
+                benefitsStat4: "82-86%",
+                benefitsStat4Title: "Increased Loyalty",
+                benefitsStat4Source: "BCG Research",
+                benefitsStat4Desc: "Of employees report being more likely to stay because of childcare benefits.",
+                benefitsStat5: "1-12%",
+                benefitsStat5Title: "Break-Even Retention",
+                benefitsStat5Source: "Catalyst.org",
+                benefitsStat5Desc: "Childcare benefits need to retain only 1-12% of eligible employees to break even.",
+                benefitsStat6: "81%",
+                benefitsStat6Title: "Recruitment Impact",
+                benefitsStat6Source: "Care.com",
+                benefitsStat6Desc: "Of employers report childcare benefits positively impact recruitment.",
+
+                // Signup Section
+                signupBadge: "Limited to 3-5 Pilot Employers",
+                signupTitle: "Join the 2026 Pilot Program",
+                signupDescription: "We're seeking Colorado employers who are interested in providing childcare benefits with philanthropic matching support. Completing this form indicates your interest in potentially participating—it is not a commitment to join the pilot.",
+                signupReady: "Ready to Get Started?",
+                signupReadyDesc: "Fill out our interest form to learn more about how your company can participate in the pilot program.",
+                signupContactDirect: "Or contact Leisan Garifullina directly at",
+
+                // Footer
+                footerCopyright: "© 2026 Gary Community Ventures. Improving outcomes for kids and families.",
+            },
+            es: {
+                // Navigation
+                navHowItWorks: "Cómo Funciona",
+                navCalculator: "Calculadora de ROI",
+                navMatching: "Programa de Contribución",
+                navFAQ: "Preguntas Frecuentes",
+                navExpressInterest: "Expresar Interés",
+                navProgramName: "Programa de Cuidado Infantil para Empleadores",
+                navProgramNameShort: "ECP",
+
+                // Hero Section
+                heroBadge: "Programa Piloto 2026",
+                heroTitle1: "Apoye el Cuidado Infantil de Sus Empleados.",
+                heroTitle2: " Igualaremos Su Inversión.",
+                heroDescription: "El cuidado infantil funciona mejor cuando la responsabilidad es compartida. Ayudamos a los empleadores de Colorado a proporcionar beneficios de cuidado infantil a través de un modelo tripartito: familias, empleadores y filantropía contribuyen para hacer que el cuidado de calidad sea accesible.",
+                heroExpressInterest: "Expresar Interés",
+                heroCalculateSavings: "Calcule Sus Ahorros",
+                heroStat1Value: "$680M",
+                heroStat1Label: "Perdidos anualmente por empleadores de CO",
+                heroStat2Value: "Hasta 50%",
+                heroStat2Label: "Contribución filantrópica disponible",
+                heroStat3Value: "3-5",
+                heroStat3Label: "Espacios piloto disponibles",
+                heroExampleTitle: "Ejemplo Rápido: Con 50% de Contribución",
+                heroExampleBadge: "Fondos Igualados",
+                heroEmployeesEnrolled: "Empleados inscritos",
+                heroTotalMonthlyBenefit: "Beneficio mensual total por empleado",
+                heroYourContribution: "Su contribución (50%)",
+                heroPhilanthropicMatch: "Contribución Filantrópica de Gary (50%)",
+                heroNetAnnualCost: "Su Costo Anual Neto",
+                heroPerEmployeeWithMatch: "$250/empleado/mes con contribución",
+
+                // Problem Section
+                problemTitle: "La Crisis del Cuidado Infantil Es un Problema Empresarial",
+                problemDescription: "Los empleadores de Colorado pierden cientos de millones anualmente debido a desafíos relacionados con el cuidado infantil. El impacto en su fuerza laboral es medible.",
+                problemStat1: "$15,600",
+                problemStat1Label: "Costo anual promedio del cuidado infantil en Colorado",
+                problemStat1Subtext: "31% del ingreso promedio de los padres",
+                problemStat2: "2.5 hrs",
+                problemStat2Label: "Tiempo de trabajo perdido por padre por semana",
+                problemStat2Subtext: "Debido a desafíos de cuidado infantil",
+                problemStat3: "16%",
+                problemStat3Label: "De los padres reportan haber sido despedidos",
+                problemStat3Subtext: "Debido a problemas de acceso al cuidado infantil",
+                problemStat4: "10,200",
+                problemStat4Label: "Madres de Colorado marginadas",
+                problemStat4Subtext: "$3.8B impacto económico potencial",
+
+                // How It Works Section
+                howItWorksTitle: "Cómo Funciona el Programa",
+                howItWorksDescription: "Basado en el modelo tripartito: cuando empleadores, familias y socios filantrópicos contribuyen, el cuidado infantil se vuelve accesible para todos. Nosotros manejamos la infraestructura para que usted pueda enfocarse en su negocio.",
+                howItWorksYourCompany: "Su Empresa",
+                howItWorksContributesFunds: "Contribuye fondos",
+                howItWorksGary: "Gary",
+                howItWorksPhilanthropicMatch: "+ Contribución Filantrópica",
+                howItWorksManagesAll: "Gestiona todo el papeleo y pagos",
+                howItWorksProviders: "Proveedores Licenciados",
+                howItWorksDirectPayment: "Pago directo",
+                howItWorksFeature1Title: "Contribución Filantrópica",
+                howItWorksFeature1Desc: "Gary proporciona fondos de fuentes filantrópicas para amplificar su inversión y reducir su costo neto por empleado.",
+                howItWorksFeature2Title: "Infraestructura de Billetera Restringida",
+                howItWorksFeature2Desc: "Los fondos fluyen directamente de su empresa a proveedores licenciados a través de Gary. Sin \"efectivo en mano\" gravable para los empleados.",
+                howItWorksFeature3Title: "Acceso a Red de Proveedores",
+                howItWorksFeature3Desc: "Gestionamos las relaciones con proveedores de cuidado infantil licenciados en Colorado. Sus empleados eligen entre instalaciones verificadas y calificadas.",
+
+                // Matching Section
+                matchingTitle: "Modelo de Responsabilidad Compartida",
+                matchingDescription: "Todos se benefician de un cuidado infantil estable: empleadores, familias y comunidades. Por eso todos comparten el costo. Nuestro enfoque tripartito significa que su contribución va más lejos con la contribución filantrópica.",
+                matchingExample: "Ejemplo",
+                matchingPhilanthropicMatch: "Contribución Filantrópica",
+                matchingYourCost: "Su costo/empleado/mes",
+                matchingTotalBenefit: "Beneficio total para el empleado",
+                matchingHowItWorksTitle: "Cómo Funciona la Contribución",
+                matchingHowItWorksDesc: "Su contribución va directamente a proveedores de cuidado infantil licenciados en nombre de sus empleados. Gary añade fondos filantrópicos para aumentar el beneficio total, para que sus empleados reciban más apoyo mientras sus costos se mantienen manejables.",
+
+                // FAQ Section
+                faqTitle: "Preguntas Frecuentes",
+                faqDescription: "Todavía estamos dando forma a este programa piloto y agradecemos sus preguntas. Esto es lo que podemos compartir hasta ahora.",
+                faqQuestion1: "¿Quién está dirigiendo este programa piloto?",
+                faqAnswer1: "Este piloto está liderado por Gary Community Ventures, una organización con sede en Colorado dedicada a mejorar los resultados para niños y familias. Gary trabaja en la intersección de políticas, filantropía e inversión comunitaria para crear un cambio sistémico. Estamos explorando enfoques innovadores para hacer que el cuidado infantil de calidad sea más accesible y asequible para las familias trabajadoras en todo Colorado.",
+                faqQuestion2: "¿Cuánto tiempo durará el piloto?",
+                faqAnswer2: "Actualmente estamos en la fase de planificación y estamos recopilando comentarios de empleadores interesados para ayudar a dar forma a la estructura del piloto. La duración exacta dependerá de varios factores, incluidos los fondos filantrópicos disponibles, el número de empleadores participantes y las necesidades específicas de las familias inscritas. Anticipamos compartir más detalles a medida que finalicemos el diseño del programa.",
+                faqQuestion3: "¿Cuántos empleados puede inscribir mi empresa?",
+                faqAnswer3: "La capacidad de inscripción se determinará en función de los comentarios de las empresas participantes y los fondos filantrópicos disponibles. Estamos recopilando información de empleadores interesados para comprender las necesidades de la fuerza laboral y trabajaremos con cada participante piloto para determinar los niveles de inscripción apropiados que tengan sentido para su organización y nuestra capacidad de contribución.",
+                faqQuestion4: "Acabo de llenar el formulario. ¿Eso significa que me estoy comprometiendo con el piloto?",
+                faqAnswer4: "No, completar el formulario de interés no constituye un compromiso. Actualmente estamos recopilando información para comprender el interés y las necesidades de los empleadores. Enviar el formulario simplemente indica que le gustaría obtener más información y potencialmente ser considerado para participar. Habrá conversaciones adicionales y un proceso de acuerdo formal separado antes de que se hagan compromisos.",
+                faqQuestion5: "¿Qué información están recopilando en esta etapa?",
+                faqAnswer5: "Estamos recopilando información preliminar para ayudarnos a comprender el interés de los empleadores, los tamaños de la fuerza laboral y qué niveles de contribución serían significativos para los posibles participantes. Esto nos ayuda a diseñar un piloto que funcione para los empleadores de Colorado y sus empleados. Todavía estamos en la fase exploratoria y agradecemos sus comentarios para dar forma al programa.",
+                faqQuestion6: "¿Hay algún costo por expresar interés?",
+                faqAnswer6: "No hay costo ni obligación para expresar interés. Simplemente estamos recopilando información en esta etapa para comprender las necesidades de los empleadores y medir el interés. Participar en el piloto implicaría contribuciones del empleador como parte del modelo de responsabilidad compartida, pero esos detalles se discutirán en profundidad antes de que se hagan compromisos.",
+                faqQuestion7: "¿Qué tipos de proveedores de cuidado infantil están incluidos?",
+                faqAnswer7: "Estamos trabajando para construir una red de proveedores de cuidado infantil licenciados en Colorado, incluidos centros de cuidado infantil y hogares de cuidado infantil familiar licenciados. La red de proveedores específica aún se está desarrollando, y agradecemos los comentarios de los empleadores sobre lo que sería más valioso para las necesidades y ubicaciones de sus empleados.",
+                faqMoreQuestions: "¿Tiene más preguntas?",
+                faqContact: "Nos encantaría saber de usted. Contacte a Leisan Garifullina en",
+
+                // Calculator Section
+                calcTitle: "Calcule Su ROI de Cuidado Infantil",
+                calcDescription: "Vea cuánto podría ahorrar en cuidado infantil con contribución filantrópica.",
+                calcYourCompany: "Su Empresa",
+                calcEmployeesToEnroll: "Empleados a Inscribir",
+                calcTotalMonthlyBenefit: "Beneficio Mensual Total por Empleado",
+                calcMatchRate: "Tasa de Contribución Filantrópica",
+                calcAvgSalary: "Salario Promedio del Empleado",
+                calcTurnoverRate: "Tasa Anual de Rotación Actual",
+                calcCostBreakdown: "Desglose de Costos",
+                calcTotalAnnualBenefit: "Beneficio Anual Total para Empleados",
+                calcPhilanthropicMatch: "Contribución Filantrópica",
+                calcYourAnnualCost: "Su Costo Anual",
+                calcPerEmployeeMonth: "/empleado/mes (su contribución)",
+                calcEstimatedSavings: "Ahorros Anuales Estimados",
+                calcTurnoverReduction: "Reducción de Costos de Rotación (37%)",
+                calcAbsenteeismReduction: "Reducción de Ausentismo (25%)",
+                calcTotalEstimatedSavings: "Ahorros Totales Estimados",
+                calcEstimatedROI: "ROI Estimado",
+                calcMethodology: "Metodología:",
+                calcMethodologyText: "Reducción de rotación del 37% y reducción de ausentismo del 25% basado en investigación de la Cámara de Comercio de EE.UU. Costo de reemplazo estimado en 85% del salario anual. Los resultados reales pueden variar según la composición específica de su fuerza laboral.",
+
+                // Benefits Section
+                benefitsTitle: "El Caso Empresarial para Beneficios de Cuidado Infantil",
+                benefitsDescription: "La investigación muestra consistentemente que los beneficios de cuidado infantil ofrecen un ROI medible a través de la reducción de rotación, menor ausentismo y mayor productividad.",
+                benefitsStat1: "37-60%",
+                benefitsStat1Title: "Reducción en Rotación",
+                benefitsStat1Source: "Cámara de Comercio de EE.UU.",
+                benefitsStat1Desc: "Los empleados tienen significativamente más probabilidades de quedarse cuando se proporcionan beneficios de cuidado infantil.",
+                benefitsStat2: "20-30%",
+                benefitsStat2Title: "Disminución en Ausencias",
+                benefitsStat2Source: "Cámara de Comercio de EE.UU.",
+                benefitsStat2Desc: "Los padres evitan 4-16 días de ausencias anualmente con acceso confiable a cuidado infantil.",
+                benefitsStat3: "90-425%",
+                benefitsStat3Title: "Rango de ROI",
+                benefitsStat3Source: "Estudio BCG/Moms First",
+                benefitsStat3Desc: "Cinco empresas estudiadas mostraron retornos significativos en inversión de cuidado infantil.",
+                benefitsStat4: "82-86%",
+                benefitsStat4Title: "Mayor Lealtad",
+                benefitsStat4Source: "Investigación BCG",
+                benefitsStat4Desc: "De los empleados reportan ser más propensos a quedarse debido a los beneficios de cuidado infantil.",
+                benefitsStat5: "1-12%",
+                benefitsStat5Title: "Retención de Equilibrio",
+                benefitsStat5Source: "Catalyst.org",
+                benefitsStat5Desc: "Los beneficios de cuidado infantil solo necesitan retener del 1-12% de empleados elegibles para alcanzar el equilibrio.",
+                benefitsStat6: "81%",
+                benefitsStat6Title: "Impacto en Reclutamiento",
+                benefitsStat6Source: "Care.com",
+                benefitsStat6Desc: "De los empleadores reportan que los beneficios de cuidado infantil impactan positivamente el reclutamiento.",
+
+                // Signup Section
+                signupBadge: "Limitado a 3-5 Empleadores Piloto",
+                signupTitle: "Únase al Programa Piloto 2026",
+                signupDescription: "Buscamos empleadores de Colorado interesados en proporcionar beneficios de cuidado infantil con apoyo de contribución filantrópica. Completar este formulario indica su interés en potencialmente participar—no es un compromiso de unirse al piloto.",
+                signupReady: "¿Listo para Comenzar?",
+                signupReadyDesc: "Complete nuestro formulario de interés para obtener más información sobre cómo su empresa puede participar en el programa piloto.",
+                signupContactDirect: "O contacte a Leisan Garifullina directamente en",
+
+                // Footer
+                footerCopyright: "© 2026 Gary Community Ventures. Mejorando los resultados para niños y familias.",
+            }
+        };
+
+        // Language Provider Component
+        const LanguageProvider = ({ children }) => {
+            const [language, setLanguage] = useState('en');
+
+            const toggleLanguage = () => {
+                setLanguage(prev => prev === 'en' ? 'es' : 'en');
+            };
+
+            const t = (key) => translations[language][key] || key;
+
+            return (
+                <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
+                    {children}
+                </LanguageContext.Provider>
+            );
+        };
 
         // Custom hook for responsive design
         const useWindowSize = () => {
@@ -264,6 +602,39 @@
             </svg>
         );
 
+        // Language Toggle Component
+        const LanguageToggle = ({ isMobileVersion = false }) => {
+            const { language, toggleLanguage } = useLanguage();
+
+            return (
+                <button
+                    onClick={toggleLanguage}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        padding: isMobileVersion ? '0.75rem 1rem' : '0.4rem 0.75rem',
+                        background: isMobileVersion ? '#f1f5f9' : 'rgba(44,83,100,0.1)',
+                        border: 'none',
+                        borderRadius: '6px',
+                        cursor: 'pointer',
+                        fontWeight: '600',
+                        fontSize: isMobileVersion ? '1rem' : '0.85rem',
+                        color: '#2c5364',
+                        transition: 'all 0.2s ease'
+                    }}
+                    aria-label="Toggle language"
+                >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                    {language === 'en' ? 'ES' : 'EN'}
+                </button>
+            );
+        };
+
         // Navigation Component
         const Navigation = () => {
             const [scrolled, setScrolled] = useState(false);
@@ -271,6 +642,7 @@
             const { width } = useWindowSize();
             const mobile = isMobile(width);
             const tablet = isTablet(width);
+            const { t } = useLanguage();
 
             useEffect(() => {
                 const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -311,21 +683,22 @@
                                 fontWeight: '700',
                                 fontSize: mobile ? '0.7rem' : '0.8rem',
                                 flexShrink: 0
-                            }}>ECP</div>
+                            }}>{t('navProgramNameShort')}</div>
                             <span style={{
                                 fontFamily: 'Crimson Pro, serif',
                                 fontSize: mobile ? '1rem' : '1.25rem',
                                 fontWeight: '600',
                                 color: '#1a1a2e'
-                            }}>{mobile ? 'ECP' : 'Employer Childcare Program'}</span>
+                            }}>{mobile ? t('navProgramNameShort') : t('navProgramName')}</span>
                         </div>
 
                         {!mobile && !tablet && (
-                            <div className="desktop-nav-links" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-                                <a href="#how-it-works" style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '0.95rem' }}>How It Works</a>
-                                <a href="#calculator" style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '0.95rem' }}>ROI Calculator</a>
-                                <a href="#matching" style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '0.95rem' }}>Matching Program</a>
-                                <a href="#faq" style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '0.95rem' }}>FAQ</a>
+                            <div className="desktop-nav-links" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                                <a href="#how-it-works" style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '0.95rem' }}>{t('navHowItWorks')}</a>
+                                <a href="#calculator" style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '0.95rem' }}>{t('navCalculator')}</a>
+                                <a href="#matching" style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '0.95rem' }}>{t('navMatching')}</a>
+                                <a href="#faq" style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '0.95rem' }}>{t('navFAQ')}</a>
+                                <LanguageToggle />
                                 <a href="#signup" style={{
                                     background: 'linear-gradient(135deg, #2c5364 0%, #203a43 100%)',
                                     color: 'white',
@@ -335,28 +708,31 @@
                                     fontWeight: '600',
                                     fontSize: '0.95rem',
                                     transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-                                }}>Express Interest</a>
+                                }}>{t('navExpressInterest')}</a>
                             </div>
                         )}
 
                         {(mobile || tablet) && (
-                            <button
-                                className="mobile-menu-btn"
-                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                                style={{
-                                    background: 'none',
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                    padding: '0.5rem',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    color: '#1a1a2e'
-                                }}
-                                aria-label="Toggle menu"
-                            >
-                                {mobileMenuOpen ? <CloseIcon size={24} /> : <MenuIcon size={24} />}
-                            </button>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <LanguageToggle />
+                                <button
+                                    className="mobile-menu-btn"
+                                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                                    style={{
+                                        background: 'none',
+                                        border: 'none',
+                                        cursor: 'pointer',
+                                        padding: '0.5rem',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        color: '#1a1a2e'
+                                    }}
+                                    aria-label="Toggle menu"
+                                >
+                                    {mobileMenuOpen ? <CloseIcon size={24} /> : <MenuIcon size={24} />}
+                                </button>
+                            </div>
                         )}
                     </nav>
 
@@ -375,10 +751,10 @@
                             gap: '1rem',
                             overflowY: 'auto'
                         }}>
-                            <a href="#how-it-works" onClick={handleLinkClick} style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '1.1rem', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0' }}>How It Works</a>
-                            <a href="#calculator" onClick={handleLinkClick} style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '1.1rem', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0' }}>ROI Calculator</a>
-                            <a href="#matching" onClick={handleLinkClick} style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '1.1rem', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0' }}>Matching Program</a>
-                            <a href="#faq" onClick={handleLinkClick} style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '1.1rem', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0' }}>FAQ</a>
+                            <a href="#how-it-works" onClick={handleLinkClick} style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '1.1rem', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0' }}>{t('navHowItWorks')}</a>
+                            <a href="#calculator" onClick={handleLinkClick} style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '1.1rem', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0' }}>{t('navCalculator')}</a>
+                            <a href="#matching" onClick={handleLinkClick} style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '1.1rem', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0' }}>{t('navMatching')}</a>
+                            <a href="#faq" onClick={handleLinkClick} style={{ color: '#1a1a2e', textDecoration: 'none', fontWeight: '500', fontSize: '1.1rem', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0' }}>{t('navFAQ')}</a>
                             <a href="#signup" onClick={handleLinkClick} style={{
                                 background: 'linear-gradient(135deg, #2c5364 0%, #203a43 100%)',
                                 color: 'white',
@@ -389,7 +765,7 @@
                                 fontSize: '1rem',
                                 textAlign: 'center',
                                 marginTop: '1rem'
-                            }}>Express Interest</a>
+                            }}>{t('navExpressInterest')}</a>
                         </div>
                     )}
                 </>
@@ -397,7 +773,9 @@
         };
 
         // Hero Section
-        const HeroSection = () => (
+        const HeroSection = () => {
+            const { t } = useLanguage();
+            return (
             <section style={{
                 minHeight: '100vh',
                 background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
@@ -439,7 +817,7 @@
                                 borderRadius: '100px',
                                 marginBottom: '1.5rem'
                             }}>
-                                <span style={{ fontSize: '0.85rem', fontWeight: '600', color: '#2c5364' }}>2026 Pilot Program</span>
+                                <span style={{ fontSize: '0.85rem', fontWeight: '600', color: '#2c5364' }}>{t('heroBadge')}</span>
                             </div>
                             <h1 style={{
                                 fontFamily: 'Crimson Pro, serif',
@@ -449,8 +827,8 @@
                                 color: '#1a1a2e',
                                 marginBottom: '1.5rem'
                             }}>
-                                Support Your Employees' Childcare.
-                                <span style={{ color: '#2c5364' }}> We'll Match Your Investment.</span>
+                                {t('heroTitle1')}
+                                <span style={{ color: '#2c5364' }}>{t('heroTitle2')}</span>
                             </h1>
                             <p style={{
                                 fontSize: '1.2rem',
@@ -458,9 +836,7 @@
                                 marginBottom: '2rem',
                                 lineHeight: '1.7'
                             }}>
-                                Childcare works best when the responsibility is shared. We help Colorado employers
-                                provide childcare benefits through a tri-share model—families, employers, and philanthropy
-                                each contributing to make quality care affordable.
+                                {t('heroDescription')}
                             </p>
                             <div style={{ display: 'flex', gap: '1rem', marginBottom: '3rem' }}>
                                 <a href="#signup" style={{
@@ -477,7 +853,7 @@
                                     boxShadow: '0 4px 15px rgba(44,83,100,0.3)',
                                     transition: 'transform 0.2s ease'
                                 }}>
-                                    Express Interest <ArrowRight size={20} />
+                                    {t('heroExpressInterest')} <ArrowRight size={20} />
                                 </a>
                                 <a href="#calculator" style={{
                                     display: 'inline-flex',
@@ -493,21 +869,21 @@
                                     border: '2px solid #2c5364',
                                     transition: 'all 0.2s ease'
                                 }}>
-                                    Calculate Your Savings
+                                    {t('heroCalculateSavings')}
                                 </a>
                             </div>
                             <div style={{ display: 'flex', gap: '2rem' }}>
                                 <div>
-                                    <div style={{ fontSize: '2rem', fontWeight: '700', color: '#2c5364' }}>$680M</div>
-                                    <div style={{ fontSize: '0.9rem', color: '#718096' }}>Lost annually by CO employers</div>
+                                    <div style={{ fontSize: '2rem', fontWeight: '700', color: '#2c5364' }}>{t('heroStat1Value')}</div>
+                                    <div style={{ fontSize: '0.9rem', color: '#718096' }}>{t('heroStat1Label')}</div>
                                 </div>
                                 <div>
-                                    <div style={{ fontSize: '2rem', fontWeight: '700', color: '#2c5364' }}>Up to 50%</div>
-                                    <div style={{ fontSize: '0.9rem', color: '#718096' }}>Philanthropic match available</div>
+                                    <div style={{ fontSize: '2rem', fontWeight: '700', color: '#2c5364' }}>{t('heroStat2Value')}</div>
+                                    <div style={{ fontSize: '0.9rem', color: '#718096' }}>{t('heroStat2Label')}</div>
                                 </div>
                                 <div>
-                                    <div style={{ fontSize: '2rem', fontWeight: '700', color: '#2c5364' }}>3-5</div>
-                                    <div style={{ fontSize: '0.9rem', color: '#718096' }}>Pilot spots available</div>
+                                    <div style={{ fontSize: '2rem', fontWeight: '700', color: '#2c5364' }}>{t('heroStat3Value')}</div>
+                                    <div style={{ fontSize: '0.9rem', color: '#718096' }}>{t('heroStat3Label')}</div>
                                 </div>
                             </div>
                         </div>
@@ -528,25 +904,25 @@
                                 borderRadius: '8px',
                                 fontSize: '0.85rem',
                                 fontWeight: '600'
-                            }}>Matched Funding</div>
+                            }}>{t('heroExampleBadge')}</div>
                             <h3 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '1.5rem', marginBottom: '1.5rem', color: '#1a1a2e' }}>
-                                Quick Example: With 50% Match
+                                {t('heroExampleTitle')}
                             </h3>
                             <div style={{ marginBottom: '1.5rem' }}>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0' }}>
-                                    <span style={{ color: '#718096' }}>Employees enrolled</span>
+                                    <span style={{ color: '#718096' }}>{t('heroEmployeesEnrolled')}</span>
                                     <span style={{ fontWeight: '600' }}>10</span>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0' }}>
-                                    <span style={{ color: '#718096' }}>Total monthly benefit per employee</span>
+                                    <span style={{ color: '#718096' }}>{t('heroTotalMonthlyBenefit')}</span>
                                     <span style={{ fontWeight: '600' }}>$500</span>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0' }}>
-                                    <span style={{ color: '#718096' }}>Your contribution (50%)</span>
+                                    <span style={{ color: '#718096' }}>{t('heroYourContribution')}</span>
                                     <span style={{ fontWeight: '600' }}>$250/employee</span>
                                 </div>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0', color: '#10b981' }}>
-                                    <span>Gary's Philanthropic Match (50%)</span>
+                                    <span>{t('heroPhilanthropicMatch')}</span>
                                     <span style={{ fontWeight: '700' }}>+$250/employee</span>
                                 </div>
                             </div>
@@ -556,36 +932,38 @@
                                 padding: '1.25rem',
                                 textAlign: 'center'
                             }}>
-                                <div style={{ color: '#166534', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Your Net Annual Cost</div>
+                                <div style={{ color: '#166534', fontSize: '0.9rem', marginBottom: '0.25rem' }}>{t('heroNetAnnualCost')}</div>
                                 <div style={{ color: '#166534', fontSize: '2rem', fontWeight: '700' }}>$30,000</div>
-                                <div style={{ color: '#166534', fontSize: '0.85rem' }}>$250/employee/month with match</div>
+                                <div style={{ color: '#166534', fontSize: '0.85rem' }}>{t('heroPerEmployeeWithMatch')}</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-        );
+        );};
 
         // Problem Section
-        const ProblemSection = () => (
+        const ProblemSection = () => {
+            const { t } = useLanguage();
+            const stats = [
+                { stat: t('problemStat1'), label: t('problemStat1Label'), subtext: t('problemStat1Subtext') },
+                { stat: t('problemStat2'), label: t('problemStat2Label'), subtext: t('problemStat2Subtext') },
+                { stat: t('problemStat3'), label: t('problemStat3Label'), subtext: t('problemStat3Subtext') },
+                { stat: t('problemStat4'), label: t('problemStat4Label'), subtext: t('problemStat4Subtext') }
+            ];
+            return (
             <section style={{ padding: '6rem 2rem', background: '#ffffff' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                     <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                         <h2 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '2.5rem', fontWeight: '700', color: '#1a1a2e', marginBottom: '1rem' }}>
-                            The Childcare Crisis Is a Business Problem
+                            {t('problemTitle')}
                         </h2>
                         <p style={{ fontSize: '1.1rem', color: '#4a5568', maxWidth: '700px', margin: '0 auto' }}>
-                            Colorado employers lose hundreds of millions annually to childcare-related challenges.
-                            The impact on your workforce is measurable.
+                            {t('problemDescription')}
                         </p>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem' }}>
-                        {[
-                            { stat: '$15,600', label: 'Average annual cost of infant care in Colorado', subtext: '31% of average parent income' },
-                            { stat: '2.5 hrs', label: 'Lost work time per parent per week', subtext: 'Due to childcare challenges' },
-                            { stat: '16%', label: 'Of parents report being fired', subtext: 'Due to childcare access issues' },
-                            { stat: '10,200', label: 'Colorado mothers sidelined', subtext: '$3.8B potential economic impact' }
-                        ].map((item, i) => (
+                        {stats.map((item, i) => (
                             <div key={i} style={{
                                 background: '#f8fafc',
                                 borderRadius: '16px',
@@ -601,19 +979,37 @@
                     </div>
                 </div>
             </section>
-        );
+        );};
 
         // How It Works Section
-        const HowItWorksSection = () => (
+        const HowItWorksSection = () => {
+            const { t } = useLanguage();
+            const features = [
+                {
+                    icon: <GiftIcon size={32} />,
+                    title: t('howItWorksFeature1Title'),
+                    desc: t('howItWorksFeature1Desc')
+                },
+                {
+                    icon: <ShieldIcon size={32} />,
+                    title: t('howItWorksFeature2Title'),
+                    desc: t('howItWorksFeature2Desc')
+                },
+                {
+                    icon: <UsersIcon size={32} />,
+                    title: t('howItWorksFeature3Title'),
+                    desc: t('howItWorksFeature3Desc')
+                }
+            ];
+            return (
             <section id="how-it-works" style={{ padding: '6rem 2rem', background: 'linear-gradient(135deg, #1a1a2e 0%, #2c5364 100%)', color: 'white' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                     <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                         <h2 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '2.5rem', fontWeight: '700', marginBottom: '1rem' }}>
-                            How the Program Works
+                            {t('howItWorksTitle')}
                         </h2>
                         <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.8)', maxWidth: '700px', margin: '0 auto' }}>
-                            Based on the tri-share model: when employers, families, and philanthropic partners each contribute,
-                            childcare becomes affordable for everyone. We manage the infrastructure so you can focus on your business.
+                            {t('howItWorksDescription')}
                         </p>
                     </div>
 
@@ -634,8 +1030,8 @@
                             border: '2px solid rgba(255,255,255,0.2)'
                         }}>
                             <BuildingIcon size={32} />
-                            <div style={{ marginTop: '0.5rem', fontWeight: '600' }}>Your Company</div>
-                            <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)' }}>Contributes funds</div>
+                            <div style={{ marginTop: '0.5rem', fontWeight: '600' }}>{t('howItWorksYourCompany')}</div>
+                            <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)' }}>{t('howItWorksContributesFunds')}</div>
                         </div>
                         <ArrowRight size={28} style={{ color: 'rgba(255,255,255,0.5)' }} />
                         <div style={{
@@ -645,9 +1041,9 @@
                             textAlign: 'center',
                             boxShadow: '0 10px 30px rgba(102,126,234,0.3)'
                         }}>
-                            <div style={{ fontSize: '1.5rem', fontWeight: '700' }}>Gary</div>
-                            <div style={{ fontSize: '0.85rem', marginTop: '0.25rem' }}>+ Philanthropic Match</div>
-                            <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.8)', marginTop: '0.5rem' }}>Manages all paperwork & payments</div>
+                            <div style={{ fontSize: '1.5rem', fontWeight: '700' }}>{t('howItWorksGary')}</div>
+                            <div style={{ fontSize: '0.85rem', marginTop: '0.25rem' }}>{t('howItWorksPhilanthropicMatch')}</div>
+                            <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.8)', marginTop: '0.5rem' }}>{t('howItWorksManagesAll')}</div>
                         </div>
                         <ArrowRight size={28} style={{ color: 'rgba(255,255,255,0.5)' }} />
                         <div style={{
@@ -658,29 +1054,13 @@
                             border: '2px solid rgba(255,255,255,0.2)'
                         }}>
                             <HeartIcon size={32} />
-                            <div style={{ marginTop: '0.5rem', fontWeight: '600' }}>Licensed Providers</div>
-                            <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)' }}>Direct payment</div>
+                            <div style={{ marginTop: '0.5rem', fontWeight: '600' }}>{t('howItWorksProviders')}</div>
+                            <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)' }}>{t('howItWorksDirectPayment')}</div>
                         </div>
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
-                        {[
-                            {
-                                icon: <GiftIcon size={32} />,
-                                title: 'Philanthropic Matching',
-                                desc: 'Gary provides matching funds from philanthropic sources to amplify your investment and reduce your net cost per employee.'
-                            },
-                            {
-                                icon: <ShieldIcon size={32} />,
-                                title: 'Restricted Wallet Infrastructure',
-                                desc: 'Funds flow directly from your business to licensed providers via Gary. No taxable "cash-in-hand" for employees.'
-                            },
-                            {
-                                icon: <UsersIcon size={32} />,
-                                title: 'Provider Network Access',
-                                desc: 'We manage relationships with licensed Colorado childcare providers. Your employees choose from vetted, qualified facilities.'
-                            }
-                        ].map((item, i) => (
+                        {features.map((item, i) => (
                             <div key={i} style={{
                                 background: 'rgba(255,255,255,0.05)',
                                 borderRadius: '16px',
@@ -695,29 +1075,31 @@
                     </div>
                 </div>
             </section>
-        );
+        );};
 
         // Matching Section
-        const MatchingSection = () => (
+        const MatchingSection = () => {
+            const { t } = useLanguage();
+            const matchCards = [
+                { match: '50%', employerCost: '$250', totalBenefit: '$500', highlight: true },
+                { match: '40%', employerCost: '$300', totalBenefit: '$500', highlight: false },
+                { match: '30%', employerCost: '$350', totalBenefit: '$500', highlight: false }
+            ];
+            return (
             <section id="matching" style={{ padding: '6rem 2rem', background: '#f8fafc' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                     <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                         <h2 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '2.5rem', fontWeight: '700', color: '#1a1a2e', marginBottom: '1rem' }}>
-                            Shared Responsibility Model
+                            {t('matchingTitle')}
                         </h2>
                         <p style={{ fontSize: '1.1rem', color: '#4a5568', maxWidth: '700px', margin: '0 auto' }}>
-                            Everyone benefits from stable childcare—employers, families, and communities. So everyone shares the cost.
-                            Our tri-share approach means your contribution goes further with philanthropic matching.
+                            {t('matchingDescription')}
                         </p>
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', marginBottom: '3rem' }}>
                         {/* Example Cards for different match levels */}
-                        {[
-                            { match: '50%', employerCost: '$250', totalBenefit: '$500', highlight: true },
-                            { match: '40%', employerCost: '$300', totalBenefit: '$500', highlight: false },
-                            { match: '30%', employerCost: '$350', totalBenefit: '$500', highlight: false }
-                        ].map((item, i) => (
+                        {matchCards.map((item, i) => (
                             <div key={i} style={{
                                 background: item.highlight ? 'linear-gradient(135deg, #2c5364 0%, #203a43 100%)' : 'white',
                                 borderRadius: '20px',
@@ -738,7 +1120,7 @@
                                         fontSize: '0.75rem',
                                         fontWeight: '600',
                                         color: 'white'
-                                    }}>Example</div>
+                                    }}>{t('matchingExample')}</div>
                                 )}
                                 <div style={{
                                     fontSize: '2.5rem',
@@ -751,14 +1133,14 @@
                                     fontWeight: '600',
                                     marginBottom: '1.5rem',
                                     color: item.highlight ? 'rgba(255,255,255,0.8)' : '#718096'
-                                }}>Philanthropic Match</div>
+                                }}>{t('matchingPhilanthropicMatch')}</div>
                                 <div style={{ borderTop: item.highlight ? '1px solid rgba(255,255,255,0.2)' : '1px solid #e2e8f0', paddingTop: '1rem' }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                        <span style={{ color: item.highlight ? 'rgba(255,255,255,0.7)' : '#718096' }}>Your cost/employee/month</span>
+                                        <span style={{ color: item.highlight ? 'rgba(255,255,255,0.7)' : '#718096' }}>{t('matchingYourCost')}</span>
                                         <span style={{ fontWeight: '600' }}>{item.employerCost}</span>
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        <span style={{ color: item.highlight ? 'rgba(255,255,255,0.7)' : '#718096' }}>Total benefit to employee</span>
+                                        <span style={{ color: item.highlight ? 'rgba(255,255,255,0.7)' : '#718096' }}>{t('matchingTotalBenefit')}</span>
                                         <span style={{ fontWeight: '600' }}>{item.totalBenefit}</span>
                                     </div>
                                 </div>
@@ -779,51 +1161,29 @@
                             <GiftIcon size={24} />
                         </div>
                         <div>
-                            <div style={{ fontWeight: '700', color: '#1e40af', marginBottom: '0.25rem' }}>How Matching Works</div>
+                            <div style={{ fontWeight: '700', color: '#1e40af', marginBottom: '0.25rem' }}>{t('matchingHowItWorksTitle')}</div>
                             <div style={{ color: '#1e3a8a', fontSize: '0.95rem' }}>
-                                Your contribution goes directly to licensed childcare providers on behalf of your employees.
-                                Gary adds philanthropic matching funds to increase the total benefit—so your employees receive more support
-                                while your costs stay manageable.
+                                {t('matchingHowItWorksDesc')}
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-        );
+        );};
 
         // FAQ Section
         const FAQSection = () => {
             const [openIndex, setOpenIndex] = useState(null);
+            const { t } = useLanguage();
 
             const faqs = [
-                {
-                    question: "Who is running this pilot program?",
-                    answer: "This pilot is led by Gary Community Ventures, a Colorado-based organization dedicated to improving outcomes for kids and families. Gary works at the intersection of policy, philanthropy, and community investment to create systemic change. We're exploring innovative approaches to make quality childcare more accessible and affordable for working families across Colorado."
-                },
-                {
-                    question: "How long will the pilot run?",
-                    answer: "We're currently in the planning phase and are gathering input from interested employers to help shape the pilot's structure. The exact duration will depend on several factors, including available philanthropic matching funds, the number of participating employers, and the specific needs of enrolled families. We anticipate sharing more details as we finalize the program design."
-                },
-                {
-                    question: "How many employees can my company enroll?",
-                    answer: "Enrollment capacity will be determined based on input from participating companies and available philanthropic funding. We're gathering information from interested employers to understand workforce needs and will work with each pilot participant to determine appropriate enrollment levels that make sense for their organization and our matching capacity."
-                },
-                {
-                    question: "I just filled out the form. Does that mean I'm committing to the pilot?",
-                    answer: "No, filling out the interest form does not constitute a commitment. We're currently gathering information to understand employer interest and needs. Submitting the form simply indicates that you'd like to learn more and potentially be considered for participation. There will be additional conversations and a separate formal agreement process before any commitments are made."
-                },
-                {
-                    question: "What information are you gathering at this stage?",
-                    answer: "We're collecting preliminary information to help us understand employer interest, workforce sizes, and what match levels would be meaningful for potential participants. This helps us design a pilot that works for Colorado employers and their employees. We're still in the exploratory phase and welcome your input to shape the program."
-                },
-                {
-                    question: "Is there a cost to express interest?",
-                    answer: "There is no cost or obligation to express interest. We're simply gathering information at this stage to understand employer needs and gauge interest. Participating in the pilot itself would involve employer contributions as part of the shared-responsibility model, but those details will be discussed in depth before any commitments are made."
-                },
-                {
-                    question: "What types of childcare providers are included?",
-                    answer: "We're working to build a network of licensed Colorado childcare providers, including childcare centers and licensed family childcare homes. The specific provider network is still being developed, and we welcome input from employers about what would be most valuable for their employees' needs and locations."
-                }
+                { question: t('faqQuestion1'), answer: t('faqAnswer1') },
+                { question: t('faqQuestion2'), answer: t('faqAnswer2') },
+                { question: t('faqQuestion3'), answer: t('faqAnswer3') },
+                { question: t('faqQuestion4'), answer: t('faqAnswer4') },
+                { question: t('faqQuestion5'), answer: t('faqAnswer5') },
+                { question: t('faqQuestion6'), answer: t('faqAnswer6') },
+                { question: t('faqQuestion7'), answer: t('faqAnswer7') }
             ];
 
             return (
@@ -831,10 +1191,10 @@
                     <div style={{ maxWidth: '900px', margin: '0 auto' }}>
                         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                             <h2 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '2.5rem', fontWeight: '700', color: '#1a1a2e', marginBottom: '1rem' }}>
-                                Frequently Asked Questions
+                                {t('faqTitle')}
                             </h2>
                             <p style={{ fontSize: '1.1rem', color: '#4a5568', maxWidth: '700px', margin: '0 auto' }}>
-                                We're still shaping this pilot program and welcome your questions. Here's what we can share so far.
+                                {t('faqDescription')}
                             </p>
                         </div>
 
@@ -903,7 +1263,7 @@
                             textAlign: 'center'
                         }}>
                             <p style={{ color: '#166534', fontSize: '0.95rem' }}>
-                                <strong>Have more questions?</strong> We'd love to hear from you. Contact Leisan Garifullina at{' '}
+                                <strong>{t('faqMoreQuestions')}</strong> {t('faqContact')}{' '}
                                 <a href="mailto:leisang@garycommunity.org" style={{ color: '#166534', fontWeight: '600' }}>
                                     leisang@garycommunity.org
                                 </a>
@@ -916,6 +1276,7 @@
 
         // Calculator Section
         const CalculatorSection = () => {
+            const { t } = useLanguage();
             const [inputs, setInputs] = useState({
                 employees: 10,
                 totalBenefit: 500,
@@ -949,10 +1310,10 @@
                     <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                             <h2 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '2.5rem', fontWeight: '700', color: '#1a1a2e', marginBottom: '1rem' }}>
-                                Calculate Your Childcare ROI
+                                {t('calcTitle')}
                             </h2>
                             <p style={{ fontSize: '1.1rem', color: '#4a5568', maxWidth: '700px', margin: '0 auto' }}>
-                                See how much you could save on childcare with philanthropic matching.
+                                {t('calcDescription')}
                             </p>
                         </div>
 
@@ -963,12 +1324,12 @@
                                 borderRadius: '20px',
                                 padding: '2.5rem'
                             }}>
-                                <h3 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '1.5rem', marginBottom: '2rem' }}>Your Company</h3>
+                                <h3 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '1.5rem', marginBottom: '2rem' }}>{t('calcYourCompany')}</h3>
 
                                 {/* Employees Slider */}
                                 <div style={{ marginBottom: '2rem' }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                        <label style={{ fontWeight: '600', color: '#1a1a2e' }}>Employees to Enroll</label>
+                                        <label style={{ fontWeight: '600', color: '#1a1a2e' }}>{t('calcEmployeesToEnroll')}</label>
                                         <span style={{ fontWeight: '700', color: '#2c5364' }}>{inputs.employees}</span>
                                     </div>
                                     <input
@@ -988,7 +1349,7 @@
                                 {/* Total Benefit Slider */}
                                 <div style={{ marginBottom: '2rem' }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                        <label style={{ fontWeight: '600', color: '#1a1a2e' }}>Total Monthly Benefit per Employee</label>
+                                        <label style={{ fontWeight: '600', color: '#1a1a2e' }}>{t('calcTotalMonthlyBenefit')}</label>
                                         <span style={{ fontWeight: '700', color: '#2c5364' }}>${inputs.totalBenefit}</span>
                                     </div>
                                     <input
@@ -1009,7 +1370,7 @@
                                 {/* Match Rate Slider */}
                                 <div style={{ marginBottom: '2rem' }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                        <label style={{ fontWeight: '600', color: '#1a1a2e' }}>Philanthropic Match Rate</label>
+                                        <label style={{ fontWeight: '600', color: '#1a1a2e' }}>{t('calcMatchRate')}</label>
                                         <span style={{ fontWeight: '700', color: '#667eea' }}>{inputs.matchRate}%</span>
                                     </div>
                                     <input
@@ -1030,7 +1391,7 @@
                                 {/* Average Salary Slider */}
                                 <div style={{ marginBottom: '2rem' }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                        <label style={{ fontWeight: '600', color: '#1a1a2e' }}>Average Employee Salary</label>
+                                        <label style={{ fontWeight: '600', color: '#1a1a2e' }}>{t('calcAvgSalary')}</label>
                                         <span style={{ fontWeight: '700', color: '#2c5364' }}>${inputs.avgSalary.toLocaleString()}</span>
                                     </div>
                                     <input
@@ -1051,7 +1412,7 @@
                                 {/* Turnover Rate Slider */}
                                 <div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                                        <label style={{ fontWeight: '600', color: '#1a1a2e' }}>Current Annual Turnover Rate</label>
+                                        <label style={{ fontWeight: '600', color: '#1a1a2e' }}>{t('calcTurnoverRate')}</label>
                                         <span style={{ fontWeight: '700', color: '#2c5364' }}>{inputs.turnoverRate}%</span>
                                     </div>
                                     <input
@@ -1080,14 +1441,14 @@
                                     marginBottom: '1.5rem'
                                 }}>
                                     <h3 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '1.25rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                        <DollarIcon size={24} /> Cost Breakdown
+                                        <DollarIcon size={24} /> {t('calcCostBreakdown')}
                                     </h3>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0' }}>
-                                        <span style={{ color: '#718096' }}>Total Annual Benefit to Employees</span>
+                                        <span style={{ color: '#718096' }}>{t('calcTotalAnnualBenefit')}</span>
                                         <span style={{ fontWeight: '600' }}>${totalAnnualBenefit.toLocaleString()}</span>
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0', borderBottom: '1px solid #e2e8f0', color: '#667eea' }}>
-                                        <span>Philanthropic Match ({inputs.matchRate}%)</span>
+                                        <span>{t('calcPhilanthropicMatch')} ({inputs.matchRate}%)</span>
                                         <span style={{ fontWeight: '700' }}>-${matchAmount.toLocaleString()}</span>
                                     </div>
                                     <div style={{
@@ -1098,11 +1459,11 @@
                                         background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
                                         borderRadius: '8px'
                                     }}>
-                                        <span style={{ fontWeight: '700', color: '#166534' }}>Your Annual Cost</span>
+                                        <span style={{ fontWeight: '700', color: '#166534' }}>{t('calcYourAnnualCost')}</span>
                                         <span style={{ fontWeight: '700', fontSize: '1.25rem', color: '#166534' }}>${annualEmployerCost.toLocaleString()}</span>
                                     </div>
                                     <div style={{ textAlign: 'center', marginTop: '1rem', color: '#718096', fontSize: '0.9rem' }}>
-                                        ${employerContribution.toFixed(0)}/employee/month (your contribution)
+                                        ${employerContribution.toFixed(0)}{t('calcPerEmployeeMonth')}
                                     </div>
                                 </div>
 
@@ -1114,14 +1475,14 @@
                                     color: 'white'
                                 }}>
                                     <h3 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '1.25rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                        <TrendingUpIcon size={24} /> Estimated Annual Savings
+                                        <TrendingUpIcon size={24} /> {t('calcEstimatedSavings')}
                                     </h3>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0', borderBottom: '1px solid rgba(255,255,255,0.2)' }}>
-                                        <span style={{ color: 'rgba(255,255,255,0.8)' }}>Turnover Cost Reduction (37%)</span>
+                                        <span style={{ color: 'rgba(255,255,255,0.8)' }}>{t('calcTurnoverReduction')}</span>
                                         <span style={{ fontWeight: '600' }}>+${Math.round(turnoverSavings).toLocaleString()}</span>
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.75rem 0', borderBottom: '1px solid rgba(255,255,255,0.2)' }}>
-                                        <span style={{ color: 'rgba(255,255,255,0.8)' }}>Absenteeism Reduction (25%)</span>
+                                        <span style={{ color: 'rgba(255,255,255,0.8)' }}>{t('calcAbsenteeismReduction')}</span>
                                         <span style={{ fontWeight: '600' }}>+${Math.round(absenteeismSavings).toLocaleString()}</span>
                                     </div>
                                     <div style={{
@@ -1132,7 +1493,7 @@
                                         background: 'rgba(255,255,255,0.1)',
                                         borderRadius: '8px'
                                     }}>
-                                        <span style={{ fontWeight: '700' }}>Total Estimated Savings</span>
+                                        <span style={{ fontWeight: '700' }}>{t('calcTotalEstimatedSavings')}</span>
                                         <span style={{ fontWeight: '700', fontSize: '1.25rem' }}>+${Math.round(totalSavings).toLocaleString()}</span>
                                     </div>
                                     <div style={{
@@ -1142,7 +1503,7 @@
                                         background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                                         borderRadius: '12px'
                                     }}>
-                                        <div style={{ fontSize: '0.9rem', marginBottom: '0.25rem' }}>Estimated ROI</div>
+                                        <div style={{ fontSize: '0.9rem', marginBottom: '0.25rem' }}>{t('calcEstimatedROI')}</div>
                                         <div style={{ fontSize: '2.5rem', fontWeight: '700' }}>{roi > 0 ? '+' : ''}{Math.round(roi)}%</div>
                                     </div>
                                 </div>
@@ -1152,8 +1513,7 @@
                         {/* Methodology note */}
                         <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#f1f5f9', borderRadius: '12px' }}>
                             <p style={{ fontSize: '0.85rem', color: '#64748b', textAlign: 'center' }}>
-                                <strong>Methodology:</strong> Turnover reduction of 37% and absenteeism reduction of 25% based on US Chamber of Commerce research.
-                                Replacement cost estimated at 85% of annual salary. Actual results may vary based on your specific workforce composition.
+                                <strong>{t('calcMethodology')}</strong> {t('calcMethodologyText')}
                             </p>
                         </div>
                     </div>
@@ -1162,58 +1522,30 @@
         };
 
         // Benefits Section
-        const BenefitsSection = () => (
+        const BenefitsSection = () => {
+            const { t } = useLanguage();
+            const benefits = [
+                { stat: t('benefitsStat1'), title: t('benefitsStat1Title'), source: t('benefitsStat1Source'), desc: t('benefitsStat1Desc') },
+                { stat: t('benefitsStat2'), title: t('benefitsStat2Title'), source: t('benefitsStat2Source'), desc: t('benefitsStat2Desc') },
+                { stat: t('benefitsStat3'), title: t('benefitsStat3Title'), source: t('benefitsStat3Source'), desc: t('benefitsStat3Desc') },
+                { stat: t('benefitsStat4'), title: t('benefitsStat4Title'), source: t('benefitsStat4Source'), desc: t('benefitsStat4Desc') },
+                { stat: t('benefitsStat5'), title: t('benefitsStat5Title'), source: t('benefitsStat5Source'), desc: t('benefitsStat5Desc') },
+                { stat: t('benefitsStat6'), title: t('benefitsStat6Title'), source: t('benefitsStat6Source'), desc: t('benefitsStat6Desc') }
+            ];
+            return (
             <section style={{ padding: '6rem 2rem', background: '#f8fafc' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                     <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                         <h2 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '2.5rem', fontWeight: '700', color: '#1a1a2e', marginBottom: '1rem' }}>
-                            The Business Case for Childcare Benefits
+                            {t('benefitsTitle')}
                         </h2>
                         <p style={{ fontSize: '1.1rem', color: '#4a5568', maxWidth: '700px', margin: '0 auto' }}>
-                            Research consistently shows that childcare benefits deliver measurable ROI through reduced turnover,
-                            lower absenteeism, and improved productivity.
+                            {t('benefitsDescription')}
                         </p>
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
-                        {[
-                            {
-                                stat: '37-60%',
-                                title: 'Reduction in Turnover',
-                                source: 'US Chamber of Commerce',
-                                desc: 'Employees are significantly more likely to stay when childcare benefits are provided.'
-                            },
-                            {
-                                stat: '20-30%',
-                                title: 'Decrease in Absences',
-                                source: 'US Chamber of Commerce',
-                                desc: 'Parents avoid 4-16 days of absences annually with reliable childcare access.'
-                            },
-                            {
-                                stat: '90-425%',
-                                title: 'ROI Range',
-                                source: 'BCG/Moms First Study',
-                                desc: 'Five companies studied showed significant returns on childcare investment.'
-                            },
-                            {
-                                stat: '82-86%',
-                                title: 'Increased Loyalty',
-                                source: 'BCG Research',
-                                desc: 'Of employees report being more likely to stay because of childcare benefits.'
-                            },
-                            {
-                                stat: '1-12%',
-                                title: 'Break-Even Retention',
-                                source: 'Catalyst.org',
-                                desc: 'Childcare benefits need to retain only 1-12% of eligible employees to break even.'
-                            },
-                            {
-                                stat: '81%',
-                                title: 'Recruitment Impact',
-                                source: 'Care.com',
-                                desc: 'Of employers report childcare benefits positively impact recruitment.'
-                            }
-                        ].map((item, i) => (
+                        {benefits.map((item, i) => (
                             <div key={i} style={{
                                 background: 'white',
                                 borderRadius: '16px',
@@ -1230,10 +1562,11 @@
                     </div>
                 </div>
             </section>
-        );
+        );};
 
         // Signup Section
         const SignupSection = () => {
+            const { t } = useLanguage();
             return (
                 <section id="signup" style={{ padding: '6rem 2rem', background: 'linear-gradient(135deg, #1a1a2e 0%, #2c5364 100%)', color: 'white' }}>
                     <div style={{ maxWidth: '800px', margin: '0 auto' }}>
@@ -1247,15 +1580,13 @@
                                 borderRadius: '100px',
                                 marginBottom: '1.5rem'
                             }}>
-                                <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>Limited to 3-5 Pilot Employers</span>
+                                <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>{t('signupBadge')}</span>
                             </div>
                             <h2 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '2.5rem', fontWeight: '700', marginBottom: '1rem' }}>
-                                Join the 2026 Pilot Program
+                                {t('signupTitle')}
                             </h2>
                             <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.8)', maxWidth: '600px', margin: '0 auto' }}>
-                                We're seeking Colorado employers who are interested in providing childcare benefits
-                                with philanthropic matching support. Completing this form indicates your interest in potentially
-                                participating—it is not a commitment to join the pilot.
+                                {t('signupDescription')}
                             </p>
                         </div>
 
@@ -1267,10 +1598,10 @@
                             color: '#1a1a2e'
                         }}>
                             <h3 style={{ fontFamily: 'Crimson Pro, serif', fontSize: '1.75rem', marginBottom: '1rem' }}>
-                                Ready to Get Started?
+                                {t('signupReady')}
                             </h3>
                             <p style={{ color: '#4a5568', marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' }}>
-                                Fill out our interest form to learn more about how your company can participate in the pilot program.
+                                {t('signupReadyDesc')}
                             </p>
                             <a
                                 href="https://c151s.share-na2.hsforms.com/2e1z3cq8sSo-Tu8ZmKYVu0Q"
@@ -1293,12 +1624,12 @@
                                     cursor: 'pointer'
                                 }}
                             >
-                                Express Interest <ArrowRight size={20} />
+                                {t('navExpressInterest')} <ArrowRight size={20} />
                             </a>
                         </div>
 
                         <p style={{ textAlign: 'center', marginTop: '1.5rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>
-                            Or contact Leisan Garifullina directly at <a href="mailto:leisang@garycommunity.org" style={{ color: 'white', fontWeight: '600' }}>leisang@garycommunity.org</a>
+                            {t('signupContactDirect')} <a href="mailto:leisang@garycommunity.org" style={{ color: 'white', fontWeight: '600' }}>leisang@garycommunity.org</a>
                         </p>
                     </div>
                 </section>
@@ -1306,7 +1637,9 @@
         };
 
         // Footer
-        const Footer = () => (
+        const Footer = () => {
+            const { t } = useLanguage();
+            return (
             <footer style={{ padding: '3rem 2rem', background: '#0f172a', color: 'rgba(255,255,255,0.7)' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -1321,30 +1654,32 @@
                             color: 'white',
                             fontWeight: '700',
                             fontSize: '0.7rem'
-                        }}>ECP</div>
-                        <span style={{ fontFamily: 'Crimson Pro, serif', fontSize: '1.1rem', color: 'white' }}>Employer Childcare Program</span>
+                        }}>{t('navProgramNameShort')}</div>
+                        <span style={{ fontFamily: 'Crimson Pro, serif', fontSize: '1.1rem', color: 'white' }}>{t('navProgramName')}</span>
                     </div>
                     <div style={{ fontSize: '0.9rem' }}>
-                        &copy; 2026 Gary Community Ventures. Improving outcomes for kids and families.
+                        {t('footerCopyright')}
                     </div>
                 </div>
             </footer>
-        );
+        );};
 
         // Main App
         const App = () => (
-            <div>
-                <Navigation />
-                <HeroSection />
-                <SignupSection />
-                <ProblemSection />
-                <HowItWorksSection />
-                <MatchingSection />
-                <CalculatorSection />
-                <BenefitsSection />
-                <FAQSection />
-                <Footer />
-            </div>
+            <LanguageProvider>
+                <div>
+                    <Navigation />
+                    <HeroSection />
+                    <SignupSection />
+                    <ProblemSection />
+                    <HowItWorksSection />
+                    <MatchingSection />
+                    <CalculatorSection />
+                    <BenefitsSection />
+                    <FAQSection />
+                    <Footer />
+                </div>
+            </LanguageProvider>
         );
 
         ReactDOM.createRoot(document.getElementById('root')).render(<App />);
